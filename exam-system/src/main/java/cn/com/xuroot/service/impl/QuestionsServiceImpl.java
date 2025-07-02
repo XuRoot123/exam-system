@@ -1,0 +1,25 @@
+package cn.com.xuroot.service.impl;
+
+import cn.com.xuroot.dao.ChapterDao;
+import cn.com.xuroot.dao.QuestionsDao;
+import cn.com.xuroot.service.QuestionsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.List;
+
+@Service
+public class QuestionsServiceImpl implements QuestionsService {
+
+    @Autowired
+    private ChapterDao chapterDao;
+
+    @Autowired
+    private QuestionsDao questionsDao;
+    @Override
+    public List<Integer> getAllChapterId() {
+        return chapterDao.getAllChapterId().stream().sorted().toList();
+    }
+}
+;

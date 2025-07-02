@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.xuroot.dao.UndeterminedUserDao">
+    <select id="getAllUndeterminedUserPage" resultType="UndeterminedUser">
+        <bind name="offset" value="(pageIndex-1)*pageSize"/>
+        select * from undetermined_users
+        <where>
+            <if test="real_name !=null and real_name !=''">
+                `real_name` like concat('%',#{real_name},'%')
+            </if>
+            <if test="role !=null and role > 0">
+                and `role` = #{role}
+            </if>
+            <if test="level !=null">
+                and `level` = #{level}
+            </if>
+            <if test="class_id!=null">
+                and `class_id` = #{class_id}
+            </if>
+        </where>
+        limit #{offset}, #{pageSize}
+    </select>
+    <select id="getAllUndeterminedUserCount" resultType="int">
+        select count(*) from undetermined_users
+        <where>
+            <if test="real_name !=null and real_name !=''">
+                `real_name` like concat('%',#{real_name},'%')
+            </if>
+            <if test="role !=null and role > 0">
+                and `role` = #{role}
+            </if>
+            <if test="level !=null">
+                and `level` = #{level}
+            </if>
+            <if test="class_id!=null">
+                and `class_id` = #{class_id}
+            </if>
+        </where>
+    </select>
+</mapper>
