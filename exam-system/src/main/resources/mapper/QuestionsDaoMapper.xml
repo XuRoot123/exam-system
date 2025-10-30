@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.xuroot.dao.QuestionsDao">
+    <select id="getRandomTitleSingleChoice" resultType="Questions">
+        select * from questions
+        <where>
+            type = 'single_choice'
+            <if test="difficult != 0 and difficult != null">
+                and `difficulty` = #{difficult}
+            </if>
+            <if test="chapterId != 5 and chapterId != null">
+                and `chapter_id` = #{chapterId}
+            </if>
+        </where>
+        ORDER BY RAND()
+        LIMIT #{singleChoiceCount}
+    </select>
+    <select id = "getRandomTitleMultipleChoice" resultType="Questions">
+        select * from questions
+        <where>
+            type = 'multiple_choice'
+            <if test="difficult != 0 and difficult != null">
+                and `difficulty` = #{difficult}
+            </if>
+            <if test="chapterId != 5 and chapterId != null">
+                and `chapter_id` = #{chapterId}
+            </if>
+        </where>
+        ORDER BY RAND()
+        LIMIT #{multipleChoiceCount}
+    </select>
+    <select id = "getRandomTitleJudge" resultType="Questions">
+        select * from questions
+        <where>
+            type = 'judge'
+            <if test="difficult != 0 and difficult != null">
+                and `difficulty` = #{difficult}
+            </if>
+            <if test="chapterId != 5 and chapterId != null">
+                and `chapter_id` = #{chapterId}
+            </if>
+        </where>
+        ORDER BY RAND()
+        LIMIT #{judgeCount}
+    </select>
+</mapper>

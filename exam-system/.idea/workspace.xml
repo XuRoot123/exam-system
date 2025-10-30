@@ -4,7 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="676c0612-a600-446f-a874-785f0a402968" name="Changes" comment="" />
+    <list default="true" id="676c0612-a600-446f-a874-785f0a402968" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/bo/ExamBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/exam/ExamController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/ExamDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/ExamPapers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/Exams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/PaperQuestions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/ExamService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/ExamServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/vo/questions/QuestionsVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/QuestionsDaoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/bo/ExamBo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/exam/ExamController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/ExamDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/ExamPapers.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/Exams.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/PaperQuestions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/ExamService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/ExamServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/vo/questions/QuestionsVo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/QuestionsDaoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/ExamApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/assets/readTitleBackground.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SystemCompilation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/ExamSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/ExamSystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/Questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/ExamSystemApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/ExamSystemApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/Questions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/teacher/AsideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/teacher/AsideMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ReadTitle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ReadTitle.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +60,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -33,31 +83,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.exam-system [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exam-system [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ExamSystemApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/java/web-exam-system/exam-system/src/main/java/cn/com/xuroot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.exam-system [clean].executor": "Run",
+    "Maven.exam-system [compile].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ExamSystemApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/java/web-exam-system/exam-system/src/main/java/cn/com/xuroot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java\web-exam-system\exam-system\src\main\java\cn\com\xuroot" />
@@ -92,7 +143,37 @@
       <workItem from="1750399507158" duration="2383000" />
       <workItem from="1750468725764" duration="30460000" />
       <workItem from="1751465400005" duration="478000" />
-      <workItem from="1751466565065" duration="1697000" />
+      <workItem from="1751466565065" duration="4018000" />
+      <workItem from="1751640390404" duration="2311000" />
+      <workItem from="1751788929078" duration="760000" />
+      <workItem from="1751877552975" duration="507000" />
+      <workItem from="1751986492749" duration="151000" />
+      <workItem from="1752285988781" duration="1542000" />
+      <workItem from="1752728179856" duration="2896000" />
+      <workItem from="1755203487971" duration="2896000" />
+      <workItem from="1755496692716" duration="477000" />
+      <workItem from="1755584694837" duration="2039000" />
+      <workItem from="1755671779732" duration="1371000" />
+      <workItem from="1756709041756" duration="2117000" />
+      <workItem from="1756883328042" duration="1292000" />
+      <workItem from="1756897889950" duration="634000" />
+      <workItem from="1756899958245" duration="776000" />
+      <workItem from="1757050957039" duration="840000" />
+      <workItem from="1758344258444" duration="1652000" />
+      <workItem from="1758605834480" duration="1446000" />
+      <workItem from="1758681277927" duration="9405000" />
+      <workItem from="1758779301134" duration="5167000" />
+      <workItem from="1758855883790" duration="1573000" />
+      <workItem from="1759467016655" duration="2363000" />
+      <workItem from="1759473467531" duration="406000" />
+      <workItem from="1759553534244" duration="1253000" />
+      <workItem from="1759640394885" duration="1284000" />
+      <workItem from="1760236786601" duration="2778000" />
+      <workItem from="1760589848478" duration="6727000" />
+      <workItem from="1761017755139" duration="3137000" />
+      <workItem from="1761201152238" duration="1712000" />
+      <workItem from="1761204272309" duration="14670000" />
+      <workItem from="1761628517383" duration="24188000" />
     </task>
     <servers />
   </component>

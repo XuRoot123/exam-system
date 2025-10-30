@@ -7,8 +7,8 @@ export default {
       type: "",
       types: ["student", "teacher", "admin"],
       user: {
-        userName: "admin",
-        password: "admin123",
+        userName: "teacher_zhang",
+        password: "zhang123",
       },
     };
   },

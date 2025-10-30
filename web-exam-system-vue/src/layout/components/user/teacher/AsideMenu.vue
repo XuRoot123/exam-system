@@ -46,7 +46,7 @@
         <i class="el-icon-setting"></i>
         <span slot="title">录入题目</span>
       </el-menu-item>
-      <el-menu-item index="/sysUser">
+      <el-menu-item index="/home/teacher/SystemCompilation">
         <i class="el-icon-setting"></i>
         <span slot="title">随机编卷</span>
       </el-menu-item>

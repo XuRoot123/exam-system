@@ -36,7 +36,6 @@ public class UserController {
         int i = userService.insertUndeterminedUser(undeterminedUser);
         return i == 1 ? ResponseResult.success(i) : ResponseResult.error(-1, "注册失败");
     }
-
     @PostMapping("/enroll")
     @Operation(summary = "用户注册")
     public ResponseResult<Integer> enroll(@RequestBody User user) {

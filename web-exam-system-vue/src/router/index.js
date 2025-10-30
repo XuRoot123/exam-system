@@ -56,6 +56,11 @@ const routes = [
         name: "ReadTitle",
         component: () => import("@/views/user/teacher/ReadTitle.vue"),
       },
+      {
+        path: "teacher/SystemCompilation",
+        name: "SystemCompilation",
+        component: () => import("@/views/user/teacher/SystemCompilation.vue"),
+      },
     ],
   },
   {
