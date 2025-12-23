@@ -8,18 +8,18 @@ import java.util.List;
 
 @Data
 public class QuestionsVo {
-    private Integer question_id;
-    private Integer chapter_id;
+    private Integer questionId;
+    private Integer chapterId;
     private String content;
     private String type;
     @JsonIgnore
     private String options;
     private String answer;
-    private Integer base_score;
+    private Integer baseScore;
     private String explanation;
     private String difficulty;
-    private String created_by;
-    private String created_at;
+    private String createdBy;
+    private String createdAt;
 
     // 辅助字段，用于接收数组类型的options
     @JsonProperty("options")

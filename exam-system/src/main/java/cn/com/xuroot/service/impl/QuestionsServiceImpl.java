@@ -27,5 +27,20 @@ public class QuestionsServiceImpl implements QuestionsService {
     public Integer addTitle(Questions questions) {
         return questionsDao.addTitle(questions);
     }
+
+    @Override
+    public List<Questions> getAllTitleToType(String type) {
+        return questionsDao.getAllTitleToType(type);
+    }
+
+    @Override
+    public int deleteTitle(Integer questionId) {
+        return questionsDao.deleteTitle(questionId);
+    }
+
+    @Override
+    public List<Questions> getAllQuestionsToPaperId(Integer paperId) {
+        List<Integer> allQuestionsToPaperId = questionsDao.getAllQuestionsToPaperId(paperId);
+        return questionsDao.getQuestionsByIds(allQuestionsToPaperId);
+    }
 }
-;

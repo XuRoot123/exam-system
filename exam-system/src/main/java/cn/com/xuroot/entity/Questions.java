@@ -8,17 +8,17 @@ import java.io.IOException;
 
 @Data
 public class Questions {
-    private Integer question_id;
-    private Integer chapter_id;
+    private Integer questionId;
+    private Integer chapterId;
     private String content;
     private String type;
     private String options;
     private String answer;
-    private Integer base_score;
+    private Integer baseScore;
     private String explanation;
     private String difficulty;
-    private String created_by;
-    private String created_at;
+    private String createdBy;
+    private String createdAt;
     public JsonNode getOptionsAsJsonNode() throws IOException {
         if (options != null && !options.isEmpty()) {
             ObjectMapper mapper = new ObjectMapper();

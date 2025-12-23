@@ -4,10 +4,10 @@ import cn.com.xuroot.bo.ExamBo;
 import cn.com.xuroot.entity.ExamPapers;
 import cn.com.xuroot.entity.Exams;
 import cn.com.xuroot.entity.PaperQuestions;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import cn.com.xuroot.vo.exam.ExamsVo;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface ExamDao {
@@ -24,4 +24,24 @@ public interface ExamDao {
 
     @Insert("insert into paper_questions(paper_id,question_id,question_order,question_score) values(#{paperId},#{questionId},#{questionOrder},#{questionScore})")
     int addPaperQuestions(PaperQuestions paperQuestions);
+
+    @Select("SELECT e.exam_id AS examId, e.paper_id AS paperId, ep.paper_name AS paperName, e.class_id AS classId, e.start_time AS startTime, e.end_time AS endTime, e.status AS status, e.instructions AS instructions, ep.created_at AS createdAt, ep.total_score AS totalScore, ep.duration_min AS testExamTime, ep.chapter_id AS chapterId, u.username AS teacherName FROM exams e LEFT JOIN exampapers ep ON e.paper_id = ep.paper_id LEFT JOIN users u ON u.user_id = ep.teacher_id")
+    List<ExamsVo> getAllTestPaper();
+
+    List<ExamsVo> getTestPaperByChapterId(Integer chapterId , Integer classId);
+
+    @Delete("DELETE FROM paper_questions WHERE paper_id = #{paperId}")
+    int deletePaperQuestions(Integer paperId);
+
+    @Delete("DELETE FROM exams WHERE paper_id = #{paperId}")
+    int deleteExams(Integer paperId);
+
+    @Delete("DELETE FROM exampapers WHERE paper_id = #{paperId}")
+    int deleteExamPapers(Integer paperId);
+
+    @Select("SELECT e.exam_id AS examId, e.paper_id AS paperId, ep.paper_name AS paperName, e.class_id AS classId, e.start_time AS startTime, e.end_time AS endTime, e.status AS status, e.instructions AS instructions, ep.created_at AS createdAt, ep.total_score AS totalScore, ep.duration_min AS testExamTime, ep.chapter_id AS chapterId, u.username AS teacherName FROM exams e LEFT JOIN exampapers ep ON e.paper_id = ep.paper_id LEFT JOIN users u ON u.user_id = ep.teacher_id WHERE e.exam_id = #{examId}")
+    ExamsVo getExamByExamId(Integer examId);
+
+    ExamsVo getExamByExamIdAndChapterId(Integer examId , Integer chapterId);
+
 }

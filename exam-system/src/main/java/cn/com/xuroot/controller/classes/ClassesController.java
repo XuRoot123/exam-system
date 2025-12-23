@@ -6,7 +6,6 @@ import cn.com.xuroot.service.ClassesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +23,7 @@ public class ClassesController {
     @GetMapping("/getAllClasses")
     @Operation(summary = "获取所有班级")
     public ResponseResult<List<Classes>>getAllClasses() {
-        return ResponseResult.success(classesService.getAllClasses());
+        List<Classes> allClasses = classesService.getAllClasses();
+        return allClasses != null ? ResponseResult.success(allClasses) : ResponseResult.error(-1, "服务器出错！");
     }
 }

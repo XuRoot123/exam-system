@@ -1,5 +1,6 @@
 <script>
-import { getAllClass, login } from "@/api/UserApi";
+import { login } from "@/api/UserApi";
+import { getAllClass } from "@/api/ClassesApi";
 
 export default {
   data() {
@@ -7,8 +8,8 @@ export default {
       type: "",
       types: ["student", "teacher", "admin"],
       user: {
-        userName: "teacher_zhang",
-        password: "zhang123",
+        userName: "stu_li",
+        password: "li123",
       },
     };
   },
@@ -57,10 +58,19 @@ export default {
         window.sessionStorage.setItem("classes", JSON.stringify(res.data));
       });
     },
+    handleKeyDown(event) {
+      if (event.key === "Enter") {
+        this.login();
+      }
+    },
   },
   mounted() {
     this.checkUserLogin();
     this.getAllClass();
+    document.addEventListener("keydown", this.handleKeyDown);
+  },
+  beforeDestroy() {
+    document.removeEventListener("keydown", this.handleKeyDown);
   },
 };
 </script>
@@ -121,7 +131,6 @@ export default {
     </div>
   </div>
 </template>
-
 <style scoped>
 * {
   margin: 0;

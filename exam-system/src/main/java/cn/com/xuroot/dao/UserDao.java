@@ -40,4 +40,7 @@ public interface UserDao {
 
     Integer getUserByClassIdCount(@Param("class_id") Integer class_id, @Param("real_name") String real_name,
                                   @Param("role") String role);
+
+    @Update("update users set password = #{password} where user_id = #{user_id}")
+    int updatePassword(String password , Integer user_id);
 }

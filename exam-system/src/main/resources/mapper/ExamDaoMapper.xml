@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.xuroot.dao.ExamDao">
+<select id="getTestPaperByChapterId" resultType="cn.com.xuroot.vo.exam.ExamsVo">
+    SELECT
+        e.exam_id AS examId,
+        e.paper_id AS paperId,
+        ep.paper_name AS paperName,
+        e.class_id AS classId,
+        e.start_time AS startTime,
+        e.end_time AS endTime,
+        e.status AS status,
+        e.instructions AS instructions,
+        ep.created_at AS createdAt,
+        ep.total_score AS totalScore,
+        ep.duration_min AS testExamTime,
+        ep.chapter_id AS chapterId,
+        u.username AS teacherName
+    FROM exams e
+    LEFT JOIN exampapers ep ON e.paper_id = ep.paper_id
+    LEFT JOIN users u ON u.user_id = ep.teacher_id
+    <where>
+        <if test="chapterId != null">
+            ep.chapter_id IN (#{chapterId} , 5)
+        </if>
+        <if test="classId != null">
+            <if test="chapterId != null">AND </if>
+            e.class_id IN (#{classId}, 3)
+        </if>
+    </where>
+</select>
+<select id="getExamByExamIdAndChapterId" resultType="cn.com.xuroot.vo.exam.ExamsVo">
+    SELECT
+        e.exam_id AS examId,
+        e.paper_id AS paperId,
+        ep.paper_name AS paperName,
+        e.class_id AS classId,
+        e.start_time AS startTime,
+        e.end_time AS endTime,
+        e.status AS status,
+        e.instructions AS instructions,
+        ep.created_at AS createdAt,
+        ep.total_score AS totalScore,
+        ep.duration_min AS testExamTime,
+        ep.chapter_id AS chapterId,
+        u.username AS teacherName
+    FROM exams e
+    LEFT JOIN exampapers ep ON e.paper_id = ep.paper_id
+    LEFT JOIN users u ON u.user_id = ep.teacher_id
+    <where>
+        <if test="examId != null">
+            e.exam_id = #{examId}
+        </if>
+        <if test="chapterId != null">
+            <choose>
+                <when test="examId != null">
+                    AND ep.chapter_id IN (#{chapterId} , 5)
+                </when>
+                <otherwise>
+                    ep.chapter_id IN (#{chapterId} , 5)
+                </otherwise>
+            </choose>
+        </if>
+    </where>
+</select>
+</mapper>

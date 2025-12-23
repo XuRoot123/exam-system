@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
                                              String role,
                                              Integer pageIndex,
                                              Integer pageSize) {
-        int class_id = classesDao.getClassesByTeacherId(user_id).getClass_id();
+        int class_id = classesDao.getClassesByTeacherId(user_id).getClassId();
         int total = userDao.getUserByClassIdCount(class_id,real_name, role);
         if (total > 0) {
             PageEntity<User> userPageEntity = new PageEntity<>();
@@ -76,6 +76,11 @@ public class UserServiceImpl implements UserService {
             return userPageEntity;
         }
         return null;
+    }
+
+    @Override
+    public int updatePassword(String password , Integer user_id) {
+        return userDao.updatePassword(password , user_id);
     }
 
 }

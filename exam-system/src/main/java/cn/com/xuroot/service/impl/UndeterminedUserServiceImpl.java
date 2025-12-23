@@ -26,7 +26,7 @@ public class UndeterminedUserServiceImpl implements UndeterminedUserService {
                                                                     String level,
                                                                    Integer user_id
                                                                    ) {
-        int class_id = classesDao.getClassesByTeacherId(user_id).getClass_id();
+        int class_id = classesDao.getClassesByTeacherId(user_id).getClassId();
         int total = undeterminedUserDao.getAllUndeterminedUserCount(real_name, role, level, class_id);
         if (total > 0) {
             PageEntity<UndeterminedUser> undeterminedUserPageEntity = new PageEntity<>();

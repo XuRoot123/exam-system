@@ -15,6 +15,11 @@ const routes = [
     component: LoginView,
   },
   {
+    path: "/exam/ExamView",
+    name: "Exam",
+    component: () => import("@/views/exam/ExamView.vue"),
+  },
+  {
     path: "/home",
     name: "Home",
     component: () => import("@/layout/BaseLayout.vue"),
@@ -35,9 +40,40 @@ const routes = [
         component: () => import("@/views/user/AdminView.vue"),
       },
       {
-        path: "admin/showUserInfo",
+        path: "system/UpdatePassword",
+        name: "UpdatePassword",
+        component: () => import("@/views/user/system/UpdatePassword.vue"),
+      },
+      {
+        path: "student/ShowWrongQuestionsView",
+        name: "ShowWrongQuestionsView",
+        component: () =>
+          import("@/views/user/student/ShowWrongQuestionsView.vue"),
+      },
+      {
+        path: "student/ChoiceExam",
+        name: "ChoiceExam",
+        component: () => import("@/views/user/student/ChoiceExam.vue"),
+      },
+      {
+        path: "student/ShowThisInfo",
+        name: "ShowThisInfo",
+        component: () => import("@/views/user/student/ShowThisInfo.vue"),
+      },
+      {
+        path: "admin/ShowUserInfo",
         name: "ShowUserInfo",
         component: () => import("@/views/user/admin/ShowUserInfo.vue"),
+      },
+      {
+        path: "admin/ShowExamInfo",
+        name: "ShowExamInfo",
+        component: () => import("@/views/user/admin/ShowExamInfo.vue"),
+      },
+      {
+        path: "admin/ShowQuestionsInfo",
+        name: "ShowQuestionsInfo",
+        component: () => import("@/views/user/admin/ShowQuestionsInfo.vue"),
       },
       {
         path: "teacher/ShowThisClassStudent",
@@ -60,6 +96,11 @@ const routes = [
         path: "teacher/SystemCompilation",
         name: "SystemCompilation",
         component: () => import("@/views/user/teacher/SystemCompilation.vue"),
+      },
+      {
+        path: "teacher/SelfCompiledVolume",
+        name: "SelfCompiledVolume",
+        component: () => import("@/views/user/teacher/SelfCompiledVolume.vue"),
       },
     ],
   },

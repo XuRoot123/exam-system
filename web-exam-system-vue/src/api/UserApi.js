@@ -12,10 +12,6 @@ export function enrollSchoolUser(user) {
   return request.post("/user/enrollSchoolUser", user);
 }
 
-export function getAllClass() {
-  return request.get("/classes/getAllClasses");
-}
-
 export function showUserList() {
   return request.get("/user/getAllSchool");
 }
@@ -46,6 +42,14 @@ export function deleteUndeterminedUser(user_id) {
   return request.delete("/undeterminedUser/deleteUndeterminedUser", {
     params: {
       user_id,
+    },
+  });
+}
+export function updatePassword(password, user_id) {
+  return request.put("/user/updatePassword", null, {
+    params: {
+      password: password,
+      user_id: user_id,
     },
   });
 }

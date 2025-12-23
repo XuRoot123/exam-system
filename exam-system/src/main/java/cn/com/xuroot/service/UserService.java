@@ -24,4 +24,5 @@ public interface UserService {
                           String role,
                           Integer pageIndex,
                           Integer pageSize);
+    int updatePassword(String password , Integer user_id);
 }

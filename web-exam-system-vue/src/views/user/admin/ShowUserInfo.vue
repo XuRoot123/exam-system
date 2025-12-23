@@ -1,6 +1,5 @@
 <template>
   <div style="margin: 0 auto">
-    <h1 style="text-align: center; width: 100%">用户管理</h1>
     <el-input
       style="width: 20%"
       placeholder="请输入你要查找的名字："

@@ -34,7 +34,7 @@
     <select id = "getRandomTitleJudge" resultType="Questions">
         select * from questions
         <where>
-            type = 'judge'
+            type = 'fill_blank'
             <if test="difficult != 0 and difficult != null">
                 and `difficulty` = #{difficult}
             </if>
@@ -45,4 +45,27 @@
         ORDER BY RAND()
         LIMIT #{judgeCount}
     </select>
+    <select id="getAllTitleToType" resultType="Questions">
+        select * from questions
+        <where>
+            <if test="type != '' and type != null">
+                type = #{type}
+            </if>
+        </where>
+    </select>
+   <select id="getQuestionsByIds" parameterType="java.util.List" resultType="Questions">
+    SELECT * FROM questions
+    <where>
+        <if test="list != null and list.size() > 0">
+            question_id IN
+            <foreach item="id" collection="list" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </if>
+        <if test="list == null or list.size() == 0">
+            1=0
+        </if>
+    </where>
+</select>
+
 </mapper>

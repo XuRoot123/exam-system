@@ -1,8 +1,10 @@
 package cn.com.xuroot.bo;
 
+import cn.com.xuroot.entity.Questions;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ExamBo {
@@ -23,4 +25,5 @@ public class ExamBo {
     private Integer difficult;
     private Integer classId;
     private Integer paperId;
+    private Questions[] questions;
 }

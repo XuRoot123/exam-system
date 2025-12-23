@@ -1,7 +1,7 @@
 <script>
 import { getAllChapterId } from "@/api/TitleApi";
 import { addRandomTestPaper } from "@/api/ExamApi";
-import { getAllClass } from "@/api/UserApi";
+import { getAllClass } from "@/api/ClassesApi";
 
 export default {
   data() {
@@ -81,12 +81,13 @@ export default {
         .then((res) => {
           this.chapters = res.data.map((id) => ({
             chapterId: id,
-            chapter_name: "第" + id + "章",
+            chapterName: "第" + id + "章",
           }));
           this.chapters.unshift({
             chapterId: "all",
-            chapter_name: "所有章节",
+            chapterName: "所有章节",
           });
+          this.chapters = this.chapters.filter((item) => item.chapterId !== 5);
         })
         .catch(() => {
           this.$message.error("服务器异常！");
@@ -94,14 +95,14 @@ export default {
       getAllClass()
         .then((res) => {
           this.classes = res.data.map((item) => ({
-            class_id: item.class_id,
-            class_name: item.class_id + "班",
+            classId: item.classId,
+            className: item.classId + "班",
           }));
           this.classes.unshift({
-            class_id: "all",
-            class_name: "所有班级",
+            classId: "all",
+            className: "所有班级",
           });
-          this.classes = this.classes.filter((item) => item.class_id !== 3);
+          this.classes = this.classes.filter((item) => item.classId !== 3);
         })
         .catch(() => {
           this.$message.error("服务器异常！");
@@ -114,18 +115,17 @@ export default {
     systemCompilation() {
       this.submitDataInitialization();
       if (this.checkSubmit()) {
+        console.log(this.conditionalRetrieval);
         addRandomTestPaper(this.conditionalRetrieval)
-          .then((res) => {
-            if (res.data.code !== -1) {
-              this.$message.success("添加成功！");
-            } else {
-              this.$message.error("添加失败！");
-            }
+          .then(() => {
+            this.$message.success("添加成功！");
           })
           .catch(() => {
             this.$message.error("服务器异常！");
           });
       }
+      this.resetData();
+      this.showConditionalRetrieval = false;
     },
     submitDataInitialization() {
       var tempTime = this.conditionalRetrieval.testExamTime;
@@ -150,6 +150,23 @@ export default {
       if (this.conditionalRetrieval.classId === "all") {
         this.conditionalRetrieval.classId = "3";
       }
+    },
+    resetData() {
+      this.conditionalRetrieval = {
+        examName: "",
+        chapterId: "all",
+        difficult: "all",
+        singleChoiceCount: 5,
+        judgeCount: 5,
+        multipleChoiceCount: 5,
+        createId: "",
+        createTime: "",
+        startTime: "",
+        endTime: "",
+        testExamTime: "1:30",
+        examInstruct: "",
+        classId: "all",
+      };
     },
   },
   created() {
@@ -185,7 +202,7 @@ export default {
             <el-option
               v-for="item in chapters"
               :key="item.chapterId"
-              :label="item.chapter_name"
+              :label="item.chapterName"
               :value="item.chapterId"
             ></el-option>
           </el-select>
@@ -198,9 +215,9 @@ export default {
           >
             <el-option
               v-for="item in classes"
-              :key="item.class_id"
-              :label="item.class_name"
-              :value="item.class_id"
+              :key="item.classId"
+              :label="item.className"
+              :value="item.classId"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -274,6 +291,7 @@ export default {
           <el-button type="primary" @click="showConditionalRetrieval = false">
             取消</el-button
           >
+          <el-button type="primary" @click="resetData()"> 重置</el-button>
         </el-form-item>
       </el-form>
     </el-drawer>

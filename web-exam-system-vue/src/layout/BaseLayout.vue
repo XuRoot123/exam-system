@@ -37,8 +37,7 @@ export default {
       this.$router.replace("/login");
     },
     xgmm() {
-      this.showChangePasswordMethod = "rtl";
-      this.showChangePassword = true;
+      this.$router.replace("/home/system/updatePassword");
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -77,7 +76,7 @@ export default {
           style="border-bottom: 1px solid #ccc; width: 100%; height: 50px"
         >
           <el-col :span="1" class="flex-center">
-            <el-avatar> {{ userInfo.real_name }}</el-avatar>
+            <el-avatar> {{ userInfo.realName }}</el-avatar>
           </el-col>
           <el-col :span="2" class="flex-center">
             <el-dropdown @command="execCommand">

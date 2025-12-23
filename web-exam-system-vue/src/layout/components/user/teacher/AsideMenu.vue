@@ -50,7 +50,7 @@
         <i class="el-icon-setting"></i>
         <span slot="title">随机编卷</span>
       </el-menu-item>
-      <el-menu-item index="/sysUser">
+      <el-menu-item index="/home/teacher/SelfCompiledVolume">
         <i class="el-icon-setting"></i>
         <span slot="title">自主编卷</span>
       </el-menu-item>

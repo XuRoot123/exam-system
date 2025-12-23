@@ -15,11 +15,11 @@
         <i class="el-icon-location"></i>
         <span>考试</span>
       </template>
-      <el-menu-item index="/sysUser">
+      <el-menu-item index="/home/student/ChoiceExam">
         <i class="el-icon-setting"></i>
-        <span slot="title">选择章节</span>
+        <span slot="title">选择考试</span>
       </el-menu-item>
-      <el-menu-item index="/supplier">
+      <el-menu-item index="/home/student/ShowWrongQuestionsView">
         <i class="el-icon-setting"></i>
         <span slot="title">查看错题</span>
       </el-menu-item>
@@ -33,11 +33,11 @@
         <i class="el-icon-location"></i>
         <span>个人</span>
       </template>
-      <el-menu-item index="/sysUser">
+      <el-menu-item index="/home/student/ShowThisInfo">
         <i class="el-icon-setting"></i>
         <span slot="title">查看个人信息</span>
       </el-menu-item>
-      <el-menu-item index="/supplier">
+      <el-menu-item index="/home/system/updatePassword">
         <i class="el-icon-setting"></i>
         <span slot="title">修改密码</span>
       </el-menu-item>

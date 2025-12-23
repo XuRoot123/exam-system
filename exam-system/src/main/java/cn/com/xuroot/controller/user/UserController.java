@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import cn.com.xuroot.entity.User;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,5 +88,10 @@ public class UserController {
         } else {
             return ResponseResult.success(userPageEntity);
         }
+    }
+    @PutMapping("/updatePassword")
+    @Operation(summary = "修改密码")
+    public ResponseResult<Integer> updatePassword(@RequestParam String password ,@RequestParam Integer user_id) {
+        return userService.updatePassword(password ,user_id) == 1 ? ResponseResult.success(1) : ResponseResult.error(-1, "修改密码失败");
     }
 }
