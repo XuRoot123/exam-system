@@ -20,6 +20,11 @@ const routes = [
     component: () => import("@/views/exam/ExamView.vue"),
   },
   {
+    path: "/exam/WrongQuestionsListView",
+    name: "WrongQuestionsList",
+    component: () => import("@/views/exam/WrongQuestionsListView.vue"),
+  },
+  {
     path: "/home",
     name: "Home",
     component: () => import("@/layout/BaseLayout.vue"),
@@ -49,6 +54,12 @@ const routes = [
         name: "ShowWrongQuestionsView",
         component: () =>
           import("@/views/user/student/ShowWrongQuestionsView.vue"),
+      },
+      {
+        path: "student/ShowHistoryScoresView",
+        name: "ShowHistoryScoresView",
+        component: () =>
+          import("@/views/user/student/ShowHistoryScoresView.vue"),
       },
       {
         path: "student/ChoiceExam",

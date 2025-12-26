@@ -23,7 +23,7 @@
         <i class="el-icon-setting"></i>
         <span slot="title">查看错题</span>
       </el-menu-item>
-      <el-menu-item index="/storage">
+      <el-menu-item index="/home/student/ShowHistoryScoresView">
         <i class="el-icon-setting"></i>
         <span slot="title">查看分数</span>
       </el-menu-item>

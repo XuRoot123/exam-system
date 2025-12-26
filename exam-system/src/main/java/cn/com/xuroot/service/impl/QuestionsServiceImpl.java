@@ -43,4 +43,9 @@ public class QuestionsServiceImpl implements QuestionsService {
         List<Integer> allQuestionsToPaperId = questionsDao.getAllQuestionsToPaperId(paperId);
         return questionsDao.getQuestionsByIds(allQuestionsToPaperId);
     }
+
+    @Override
+    public Questions getQuestionsByQuestionId(Integer questionId) {
+        return questionsDao.getQuestionsByQuestionId(questionId);
+    }
 }

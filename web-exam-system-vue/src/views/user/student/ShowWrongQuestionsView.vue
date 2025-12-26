@@ -16,7 +16,7 @@ export default {
       userId: "",
       examPassed: [],
       chapters: [],
-      choiceChapter: 0,
+      choiceChapter: 1,
       exams: [],
     };
   },
@@ -79,7 +79,12 @@ export default {
         });
     },
     showWrongQuestionsResult(examHistory) {
-      console.log(examHistory);
+      this.$router.push({
+        path: "/exam/WrongQuestionsListView",
+        query: {
+          examHistory: JSON.stringify(examHistory),
+        },
+      });
     },
   },
   created() {

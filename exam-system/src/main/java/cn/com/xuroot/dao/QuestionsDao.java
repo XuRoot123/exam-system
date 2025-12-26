@@ -31,4 +31,7 @@ public interface QuestionsDao {
     List<Integer> getAllQuestionsToPaperId(Integer paperId);
 
     List<Questions> getQuestionsByIds(List<Integer> questionIds);
+
+    @Select("select * from questions where question_id = #{questionId}")
+    Questions getQuestionsByQuestionId(Integer questionId);
 }

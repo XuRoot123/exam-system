@@ -96,4 +96,18 @@ public class QuestionsController {
         }
         return ResponseResult.error(-1, "服务器故障，请联系管理员！");
     }
+    @GetMapping("/getQuestionsByQuestionId")
+    @Operation(summary = "获取指定题目")
+    public ResponseResult<Questions> getQuestionsByQuestionId(@RequestParam(value = "questionId") @Parameter(name = "questionId", description = "题目ID") Integer questionId) {
+        Questions questions = questionsService.getQuestionsByQuestionId(questionId);
+        if (questions != null) {
+            try {
+                String encryptedAnswer = AesUtil.encrypt(questions.getAnswer());
+                questions.setAnswer(encryptedAnswer);
+            } catch (Exception e) {
+                return ResponseResult.error(-1, "答案加密失败！");
+            }
+        }
+        return questions != null ? ResponseResult.success(questions) : ResponseResult.error(-1, "服务器故障，请联系管理员！");
+    }
 }

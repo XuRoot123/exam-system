@@ -28,3 +28,10 @@ export function getAllQuestionByPaperId(paperId) {
     },
   });
 }
+export function getQuestionsByQuestionId(questionId) {
+  return request.get("/questions/getQuestionsByQuestionId", {
+    params: {
+      questionId: questionId,
+    },
+  });
+}

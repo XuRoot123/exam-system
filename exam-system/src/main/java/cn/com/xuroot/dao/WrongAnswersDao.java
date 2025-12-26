@@ -3,10 +3,16 @@ package cn.com.xuroot.dao;
 import cn.com.xuroot.entity.WrongAnswers;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface WrongAnswersDao {
 
     @Insert("INSERT INTO wrong_answers (student_id, question_id, exam_id, wrong_answer, correct_answer, collected_at) VALUES (#{studentId}, #{questionId}, #{examId}, #{wrongAnswer}, #{correctAnswer}, #{collectedAt});")
     int addWrongAnswers(WrongAnswers wrongAnswers);
+
+    @Select("SELECT * FROM wrong_answers WHERE student_id = #{userId} AND exam_id = #{examId};")
+    List<WrongAnswers> getWrongAnswersByUserIdAndExamId(Integer userId, Integer examId);
 }
