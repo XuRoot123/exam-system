@@ -37,17 +37,12 @@ public class QuestionsController {
     public ResponseResult<Questions> addTitle(@RequestBody QuestionsVo questionsVo) {
         questionsVo.convertOptionsListToString();
         Questions questions = new Questions();
+        questions.setAnswer(questionsVo.getAnswer());
         questions.setQuestionId((questionsVo.getQuestionId()));
         questions.setChapterId(questionsVo.getChapterId());
         questions.setContent(questionsVo.getContent());
         questions.setType(questionsVo.getType());
         questions.setOptions(questionsVo.getOptions());
-        try {
-            String decodedOptions = AesUtil.decrypt(questionsVo.getAnswer());
-            questions.setAnswer(decodedOptions);
-        } catch (Exception e) {
-            return ResponseResult.error(-1, "解密失败！");
-        }
         questions.setBaseScore(questionsVo.getBaseScore());
         questions.setExplanation(questionsVo.getExplanation());
         questions.setDifficulty(questionsVo.getDifficulty());

@@ -37,6 +37,7 @@ public class UserController {
         int i = userService.insertUndeterminedUser(undeterminedUser);
         return i == 1 ? ResponseResult.success(i) : ResponseResult.error(-1, "注册失败");
     }
+
     @PostMapping("/enroll")
     @Operation(summary = "用户注册")
     public ResponseResult<Integer> enroll(@RequestBody User user) {
@@ -46,14 +47,14 @@ public class UserController {
 
     @GetMapping("/getAllUserPage")
     @Operation(summary = "获取所有用户")
-    public ResponseResult<PageEntity<User>> getAllUserPage(@Parameter(name = "real_name", description = "真实名字，可通过模糊查询查找")
-                                                           @RequestParam(required = false) String real_name,
+    public ResponseResult<PageEntity<User>> getAllUserPage(@Parameter(name = "realName", description = "真实名字，可通过模糊查询查找")
+                                                           @RequestParam(required = false) String realName,
                                                            @Parameter(name = "role", description = "角色")
                                                            @RequestParam(required = false) String role,
                                                            @Parameter(name = "pageIndex", description = "页码") Integer pageIndex,
                                                            @Parameter(name = "pageSize", description = "每页数量") Integer pageSize
     ) {
-        PageEntity<User> allUserPage = userService.getAllUserPage(real_name, role, pageIndex, pageSize);
+        PageEntity<User> allUserPage = userService.getAllUserPage(realName, role, pageIndex, pageSize);
         if (allUserPage == null) {
             return ResponseResult.error(-1, "获取用户失败");
         } else {
@@ -63,18 +64,18 @@ public class UserController {
 
     @DeleteMapping("/deleteUser")
     @Operation(summary = "删除用户")
-    public ResponseResult<Integer> deleteUser(@Parameter(name = "user_id", description = "用户id")
-                                              @RequestParam Integer user_id) {
-        Integer i = userService.deleteUser(user_id);
+    public ResponseResult<Integer> deleteUser(@Parameter(name = "userId", description = "用户id")
+                                              @RequestParam Integer userId) {
+        Integer i = userService.deleteUser(userId);
         return i == 1 ? ResponseResult.success(i) : ResponseResult.error(-1, "该用户已删除");
     }
 
     @GetMapping("/getUserByClassId")
     @Operation(summary = "获取班级用户")
-    public ResponseResult<PageEntity<User>> getUserByClassId(@Parameter(name = "teacher_id", description = "教师id")
-                                                             @RequestParam Integer teacher_id,
-                                                             @Parameter(name = "real_name", description = "真实名字，可通过模糊查询查找")
-                                                             @RequestParam(required = false) String real_name,
+    public ResponseResult<PageEntity<User>> getUserByClassId(@Parameter(name = "teacherId", description = "教师id")
+                                                             @RequestParam Integer teacherId,
+                                                             @Parameter(name = "realName", description = "真实名字，可通过模糊查询查找")
+                                                             @RequestParam(required = false) String realName,
                                                              @Parameter(name = "role", description = "角色")
                                                              @RequestParam(required = false) String role,
                                                              @Parameter(name = "pageIndex", description = "页码")
@@ -82,16 +83,35 @@ public class UserController {
                                                              @Parameter(name = "pageSize", description = "每页数量")
                                                              @RequestParam(required = false) Integer pageSize
     ) {
-        PageEntity<User> userPageEntity = userService.getUserByClassId(teacher_id, real_name, role, pageIndex, pageSize);
+        PageEntity<User> userPageEntity = userService.getUserByClassId(teacherId, realName, role, pageIndex, pageSize);
         if (userPageEntity == null) {
             return ResponseResult.error(-1, "获取用户失败");
         } else {
             return ResponseResult.success(userPageEntity);
         }
     }
+
     @PutMapping("/updatePassword")
     @Operation(summary = "修改密码")
-    public ResponseResult<Integer> updatePassword(@RequestParam String password ,@RequestParam Integer user_id) {
-        return userService.updatePassword(password ,user_id) == 1 ? ResponseResult.success(1) : ResponseResult.error(-1, "修改密码失败");
+    public ResponseResult<Integer> updatePassword(@RequestParam String password, @RequestParam Integer userId) {
+        return userService.updatePassword(password, userId) == 1 ? ResponseResult.success(1) : ResponseResult.error(-1, "修改密码失败");
+    }
+
+    @GetMapping("/getUserIdByClassId")
+    @Operation(summary = "获取班级学生id")
+    public ResponseResult<List<Integer>> getUserIdByClassId(@Parameter(name = "classId", description = "班级id")
+                                                            @RequestParam Integer classId) {
+        List<Integer> userIdByClassId = userService.getUserIdByClassId(classId);
+        if (userIdByClassId == null) {
+            return ResponseResult.error(-1, "获取用户id失败");
+        } else {
+            return ResponseResult.success(userIdByClassId);
+        }
+    }
+    @GetMapping("/getRealNameByUserId")
+    @Operation(summary = "获取用户真实名字")
+    public ResponseResult<String> getRealNameByUserId(@Parameter(name = "userId", description = "用户id") @RequestParam Integer userId) {
+        String realName = userService.getRealNameByUserId(userId);
+        return realName == null  ? ResponseResult.error(-1, "获取用户真实名字失败") : ResponseResult.success(realName);
     }
 }

@@ -4,9 +4,9 @@ import { addTitle, getAllChapterId } from "@/api/TitleApi";
 export default {
   data() {
     return {
-      choose_drawer: false,
-      judge_drawer: false,
-      blank_drawer: false,
+      chooserDawer: false,
+      judgeDrawer: false,
+      blankDrawer: false,
       ifChoose: false,
       ifBlank: false,
       ifJudge: false,
@@ -32,30 +32,30 @@ export default {
       ],
       chapters: [
         {
-          chapter_id: "",
-          chapter_name: "",
+          chapterId: "",
+          chapterName: "",
         },
       ],
       options: [],
       difficulty: ["easy", "medium", "hard"],
       title: {
         options: [],
-        chapter_id: "第一章",
+        chapterId: 1,
         content: "",
         type: "",
         answer: "",
-        base_score: 5,
+        baseScore: 5,
         explanation: "",
         difficulty: "",
-        created_by: "",
-        created_at: "",
+        createdBy: "",
+        createdAt: "",
       },
-      judge_title_answer: [],
+      judgeTitleAnswer: [],
       rules: {
         content: [
           { required: true, message: "请输入题目名称", trigger: "blur" },
         ],
-        chapter_id: [
+        chapterId: [
           { required: true, message: "请选择题目章节", trigger: "change" },
         ],
         difficulty: [
@@ -127,12 +127,14 @@ export default {
     initializationData() {
       getAllChapterId()
         .then((res) => {
-          this.chapters = res.data.map((id) => ({
-            chapter: id,
-            chapter_name: "第" + id + "章",
-          }));
-          var temp_chapter = JSON.parse(JSON.stringify(this.chapters));
-          this.chapters = temp_chapter;
+          this.chapters = res.data
+            .filter((id) => id !== 5)
+            .map((id) => ({
+              chapterId: id,
+              chapterName: "第" + id + "章",
+            }));
+          var tempChapter = JSON.parse(JSON.stringify(this.chapters));
+          this.chapters = tempChapter;
         })
         .catch(() => {
           this.$message.error("服务器异常！");
@@ -174,12 +176,12 @@ export default {
       })
         .then(() => {
           this.title = {
-            chapter_id: 1,
+            chapterId: 1,
             options: [],
             content: "",
             type: "",
             answer: "",
-            base_score: 5,
+            baseScore: 5,
             explanation: "",
             difficulty: "",
           };
@@ -190,6 +192,7 @@ export default {
     },
     submitForm() {
       this.SubmitDataInitialization();
+      console.log(this.title);
       if (this.checkSubmit()) {
         addTitle(this.title)
           .then((res) => {
@@ -219,8 +222,8 @@ export default {
         title.type = "multiple_choice";
       }
       var tempUser = JSON.parse(sessionStorage.getItem("user"));
-      title.created_by = tempUser.user_id;
-      title.created_at = new Date().toLocaleString();
+      title.createdBy = tempUser.userId;
+      title.createdAt = new Date().toLocaleString();
       var tempOptions = this.choiceChooses;
       this.options = [];
       if (this.ifChoose) {
@@ -233,7 +236,7 @@ export default {
       }
       if (this.ifJudge) {
         tempOptions = this.Chooses;
-        this.title.answer = this.judge_title_answer.toString();
+        this.title.answer = this.judgeTitleAnswer.toString();
         for (let i = 0; i < tempOptions.length; i++) {
           var str2 =
             tempOptions[i].ChooseAbbreviation + "." + tempOptions[i].Content;
@@ -265,11 +268,11 @@ export default {
   >
     <el-button
       @click="
-        judge_drawer = false;
+        judgeDrawer = false;
         ifJudge = false;
         ifBlank = false;
-        blank_drawer = false;
-        choose_drawer = true;
+        blankDrawer = false;
+        chooserDawer = true;
         ifChoose = true;
       "
       type="primary"
@@ -279,11 +282,11 @@ export default {
     </el-button>
     <el-button
       @click="
-        choose_drawer = false;
+        chooserDawer = false;
         ifChoose = false;
         ifBlank = false;
-        blank_drawer = false;
-        judge_drawer = true;
+        blankDrawer = false;
+        judgeDrawer = true;
         ifJudge = true;
       "
       type="primary"
@@ -293,12 +296,12 @@ export default {
     </el-button>
     <el-button
       @click="
-        choose_drawer = false;
+        chooserDawer = false;
         ifChoose = false;
-        judge_drawer = false;
+        judgeDrawer = false;
         ifJudge = false;
         ifBlank = true;
-        blank_drawer = true;
+        blankDrawer = true;
       "
       type="primary"
       style="margin-left: 16px"
@@ -307,7 +310,7 @@ export default {
     </el-button>
     <el-drawer
       title="选择题录入"
-      :visible.sync="choose_drawer"
+      :visible.sync="chooserDawer"
       :with-header="false"
     >
       <h1>选择题录入</h1>
@@ -316,12 +319,12 @@ export default {
           <el-input v-model="title.content"></el-input>
         </el-form-item>
         <el-form-item label="题目章节">
-          <el-select v-model="title.chapter_id" filterable placeholder="请选择">
+          <el-select v-model="title.chapterId" filterable placeholder="请选择">
             <el-option
               v-for="item in chapters"
-              :key="item.chapter_id"
-              :label="item.chapter_name"
-              :value="item.chapter_id"
+              :key="item.chapterId"
+              :label="item.chapterName"
+              :value="item.chapterId"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -385,11 +388,11 @@ export default {
           </el-form-item>
           <el-form-item
             label="分值"
-            v-model="title.base_score"
+            v-model="title.baseScore"
             label-width="70px"
           >
             <el-input-number
-              v-model="title.base_score"
+              v-model="title.baseScore"
               :min="1"
               :max="10"
               label="题目分值"
@@ -409,7 +412,7 @@ export default {
     </el-drawer>
     <el-drawer
       title="多选题录入"
-      :visible.sync="judge_drawer"
+      :visible.sync="judgeDrawer"
       :with-header="false"
     >
       <h1>多选题录入</h1>
@@ -418,12 +421,12 @@ export default {
           <el-input v-model="title.content"></el-input>
         </el-form-item>
         <el-form-item label="题目章节">
-          <el-select v-model="title.chapter_id" filterable placeholder="请选择">
+          <el-select v-model="title.chapterId" filterable placeholder="请选择">
             <el-option
               v-for="item in chapters"
-              :key="item.chapter_id"
-              :label="item.chapter_name"
-              :value="item.chapter_id"
+              :key="item.chapterId"
+              :label="item.chapterName"
+              :value="item.chapterId"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -471,7 +474,7 @@ export default {
             @click="choiceChoose()"
           >
             <el-checkbox-group
-              v-model="judge_title_answer"
+              v-model="judgeTitleAnswer"
               style="margin-bottom: 20px"
             >
               <el-checkbox-button
@@ -490,11 +493,11 @@ export default {
           </el-form-item>
           <el-form-item
             label="分值"
-            v-model="title.base_score"
+            v-model="title.baseScore"
             label-width="70px"
           >
             <el-input-number
-              v-model="title.base_score"
+              v-model="title.baseScore"
               :min="1"
               :max="10"
               label="题目分值"
@@ -514,7 +517,7 @@ export default {
     </el-drawer>
     <el-drawer
       title="填空录入"
-      :visible.sync="blank_drawer"
+      :visible.sync="blankDrawer"
       :with-header="false"
     >
       <h1>填空题录入</h1>
@@ -523,12 +526,12 @@ export default {
           <el-input type="textarea" autosize v-model="title.content"></el-input>
         </el-form-item>
         <el-form-item label="题目章节">
-          <el-select v-model="title.chapter_id" filterable placeholder="请选择">
+          <el-select v-model="title.chapterId" filterable placeholder="请选择">
             <el-option
               v-for="item in chapters"
-              :key="item.chapter_id"
-              :label="item.chapter_name"
-              :value="item.chapter_id"
+              :key="item.chapterId"
+              :label="item.chapterName"
+              :value="item.chapterId"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -555,13 +558,9 @@ export default {
             placeholder="请输入题目解析"
           ></el-input>
         </el-form-item>
-        <el-form-item
-          label="分值"
-          v-model="title.base_score"
-          label-width="70px"
-        >
+        <el-form-item label="分值" v-model="title.baseScore" label-width="70px">
           <el-input-number
-            v-model="title.base_score"
+            v-model="title.baseScore"
             :min="1"
             :max="10"
             label="题目分值"

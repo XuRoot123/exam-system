@@ -7,4 +7,6 @@ import java.util.List;
 public interface ClassesService {
 
     List<Classes> getAllClasses();
+
+    int getAllClassIdByTeacherId(int teacherId);
 }

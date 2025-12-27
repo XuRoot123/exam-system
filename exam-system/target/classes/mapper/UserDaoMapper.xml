@@ -7,8 +7,8 @@
         <bind name="offset" value="(pageIndex-1)*pageSize" />
         select user_id, username, real_name,email,class_id,phone,sex,created_at, role from users
         <where>
-            <if test="real_name !=null and real_name !=''">
-                `real_name` like concat('%',#{real_name},'%')
+            <if test="realName !=null and realName !=''">
+                `real_name` like concat('%',#{realName},'%')
             </if>
             <if test="role !=null and role > 0">
                 and `role` = #{role}
@@ -19,8 +19,8 @@
     <select id="getAllUserCount" resultType="int">
         select count(*) from users
         <where>
-            <if test="real_name !=null and real_name !=''">
-                `real_name` like concat('%',#{real_name},'%')
+            <if test="realName !=null and realName !=''">
+                `real_name` like concat('%',#{realName},'%')
             </if>
             <if test="role !=null and role > 0">
                 and `role` = #{role}
@@ -30,29 +30,29 @@
     <select id="getUserByClassId" resultType="user">
         select user_id, username, real_name,email,class_id,phone,sex,created_at, role from users
         <where>
-            <if test="real_name !=null and real_name !=''">
-                `real_name` like concat('%',#{real_name},'%')
+            <if test="realName !=null and realName !=''">
+                `real_name` like concat('%',#{realName},'%')
             </if>
             <if test="role !=null and role > 0">
                 and `role` = #{role}
             </if>
-            <if test="class_id!=null">
-                and `class_id` = #{class_id}
+            <if test="classId!=null">
+                and `class_id` = #{classId}
             </if>
-            and `class_id` = #{class_id}
+            and `class_id` = #{classId}
         </where>
     </select>
     <select id="getUserByClassIdCount" resultType="int">
         select count(*) from users
         <where>
-            <if test="real_name !=null and real_name !=''">
-                `real_name` like concat('%',#{real_name},'%')
+            <if test="realName !=null and realName !=''">
+                `real_name` like concat('%',#{realName},'%')
             </if>
             <if test="role !=null and role > 0">
                 and `role` = #{role}
             </if>
-            <if test="class_id!=null">
-                and `class_id` = #{class_id}
+            <if test="classId!=null">
+                and `class_id` = #{classId}
             </if>
         </where>
 

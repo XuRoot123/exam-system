@@ -38,13 +38,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageEntity<User> getAllUserPage(String real_name, String role,
+    public PageEntity<User> getAllUserPage(String realName, String role,
                                            Integer pageIndex,
                                            Integer pageSize) {
-        int total = userDao.getAllUserCount(real_name, role);
+        int total = userDao.getAllUserCount(realName, role);
         if (total > 0) {
             PageEntity<User> userPageEntity = new PageEntity<>();
-            List<User> list = userDao.getAllUserPage(real_name, role, pageIndex, pageSize);
+            List<User> list = userDao.getAllUserPage(realName, role, pageIndex, pageSize);
             userPageEntity.setList(list);
             userPageEntity.setTotal(total);
             return userPageEntity;
@@ -55,22 +55,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public Integer deleteUser(Integer user_id) {
-        userDao.updateClassTeacherIdByUserId(user_id);
-        return userDao.deleteUser(user_id);
+    public Integer deleteUser(Integer userId) {
+        userDao.updateClassTeacherIdByUserId(userId);
+        return userDao.deleteUser(userId);
     }
 
     @Override
-    public PageEntity<User> getUserByClassId(Integer user_id,
-                                             String real_name,
+    public PageEntity<User> getUserByClassId(Integer userId,
+                                             String realName,
                                              String role,
                                              Integer pageIndex,
                                              Integer pageSize) {
-        int class_id = classesDao.getClassesByTeacherId(user_id).getClassId();
-        int total = userDao.getUserByClassIdCount(class_id,real_name, role);
+        int classId = classesDao.getClassesByTeacherId(userId).getClassId();
+        int total = userDao.getUserByClassIdCount(classId,realName, role);
         if (total > 0) {
             PageEntity<User> userPageEntity = new PageEntity<>();
-            List<User> list = userDao.getUserByClassId(class_id, real_name, role, pageIndex, pageSize);
+            List<User> list = userDao.getUserByClassId(classId, realName, role, pageIndex, pageSize);
             userPageEntity.setList(list);
             userPageEntity.setTotal(total);
             return userPageEntity;
@@ -81,6 +81,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updatePassword(String password , Integer user_id) {
         return userDao.updatePassword(password , user_id);
+    }
+
+    @Override
+    public List<Integer> getUserIdByClassId(Integer classId) {
+        return userDao.getUserIdByClassId(classId);
+    }
+
+    @Override
+    public String getRealNameByUserId(Integer userId) {
+        return userDao.getRealNameByUserId(userId);
     }
 
 }

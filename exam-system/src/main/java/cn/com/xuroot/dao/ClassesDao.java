@@ -14,6 +14,9 @@ public interface ClassesDao {
     List<Classes> getAllClasses();
 
 
-    @Select("select * from classes where teacher_id = #{teacher_id}")
-    Classes getClassesByTeacherId(@Param("teacher_id") Integer teacher_id);
+    @Select("select * from classes where teacher_id = #{teacherId}")
+    Classes getClassesByTeacherId(@Param("teacherId") Integer teacherId);
+
+    @Select("select class_id from classes where teacher_id = #{teacherId}")
+    int getAllClassIdByTeacherId(@Param("teacherId") Integer teacherId);
 }

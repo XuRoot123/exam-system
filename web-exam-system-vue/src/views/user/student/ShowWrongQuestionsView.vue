@@ -150,6 +150,16 @@ export default {
         <el-table-column label="考试总分" prop="totalScore"></el-table-column>
         <el-table-column label="实际得分" prop="actualScore"></el-table-column>
         <el-table-column label="作答时间" prop="examAt"></el-table-column>
+        <el-table-column label="操作" width="200">
+          <template slot-scope="scope">
+            <el-button
+              type="primary"
+              @click="showWrongQuestionsResult(scope.row)"
+            >
+              查看考试错题
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
       <div v-if="showSearchByChapterList || showFindAllExam">
         <el-button

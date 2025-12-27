@@ -3,7 +3,7 @@
     <el-input
       style="width: 20%"
       placeholder="请输入你要查找的名字："
-      v-model="real_name"
+      v-model="realName"
       @blur="loadUserListLike"
       clearable
     ></el-input>
@@ -14,18 +14,18 @@
       >查找
     </el-button>
     <el-table :data="userList" border style="width: 100%">
-      <el-table-column fixed prop="user_id" label="编号" width="150">
+      <el-table-column fixed prop="userId" label="编号" width="150">
       </el-table-column>
       <el-table-column
         prop="userName"
         label="账号名"
         width="120"
       ></el-table-column>
-      <el-table-column prop="real_name" label="用户名" width="120">
+      <el-table-column prop="realName" label="用户名" width="120">
       </el-table-column>
       <el-table-column prop="sex" label="性别" width="120"></el-table-column>
       <el-table-column
-        prop="class_id"
+        prop="classId"
         label="班级id"
         width="120"
       ></el-table-column>
@@ -33,7 +33,7 @@
       <el-table-column prop="role" label="职位" width="120"> </el-table-column>
       <el-table-column prop="phone" label="电话" width="120"></el-table-column>
       <el-table-column
-        prop="created_at"
+        prop="createdAt"
         label="创建时间"
         width="200"
         show-overflow-tooltip
@@ -71,19 +71,19 @@ export default {
     return {
       userList: [],
       user: {
-        user_id: "",
+        userId: "",
         userName: "",
         password: "",
-        real_name: "",
+        realName: "",
         email: "",
         phone: "",
         role: "",
-        class_id: "",
-        created_at: "",
+        classId: "",
+        createdAt: "",
       },
       blackListUserId: [17],
       userName: "",
-      real_name: "",
+      realName: "",
       pageSizes: [5, 10, 20],
       total: 0,
       choosePageSize: 5,
@@ -92,7 +92,7 @@ export default {
       params: {
         pageIndex: this.pageIndex,
         pageSize: this.choosePageSize,
-        real_name: this.real_name,
+        realName: this.realName,
         role: this.role,
       },
     };
@@ -105,7 +105,7 @@ export default {
         params = {
           pageIndex: 1,
           pageSize: 5,
-          real_name: "",
+          realName: "",
           role: "",
         };
         await showUserListPage(params)
@@ -129,7 +129,7 @@ export default {
       this.total = data.data.total - this.blackListUserId.length;
       this.userList.forEach(this.setSex);
       for (let i = 0; i < this.userList.length; i++) {
-        if (this.blackListUserId.includes(this.userList[i].user_id)) {
+        if (this.blackListUserId.includes(this.userList[i].userId)) {
           this.ShowBlackList(this.userList[i]);
         }
       }
@@ -141,7 +141,7 @@ export default {
         confirmButtonText: "我已知晓后果，确定删除该用户！",
       })
         .then(() => {
-          return deleteUser(row.user_id);
+          return deleteUser(row.userId);
         })
         .then(() => {
           this.loadUserList();
@@ -151,16 +151,16 @@ export default {
         });
     },
     ShowBlackList(user) {
-      if (this.blackListUserId.includes(user.user_id)) {
+      if (this.blackListUserId.includes(user.userId)) {
         Object.keys(user).forEach((key) => {
           user[key] = "你无权查看此用户！";
         });
       }
     },
     loadUserListLike() {
-      this.real_name = this.real_name.trim();
+      this.realName = this.realName.trim();
       this.params.pageIndex = 1;
-      this.params.real_name = this.real_name;
+      this.params.realName = this.realName;
       this.loadUserList();
     },
     changePageSize(p) {
@@ -184,13 +184,13 @@ export default {
       this.loadUserList();
     },
     initializationData() {
-      if (this.userList.class_id === "" || this.userList.class_id === null) {
-        this.userList.class_id = "无";
+      if (this.userList.classId === "" || this.userList.classId === null) {
+        this.userList.classId = "无";
       }
       this.choosePageSize = this.pageSizes[0];
       this.params.pageIndex = 1;
       this.params.pageSize = 5;
-      this.params.real_name = this.real_name;
+      this.params.realName = this.realName;
       this.loadUserList();
     },
     setSex(user) {

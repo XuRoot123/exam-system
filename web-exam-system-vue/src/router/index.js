@@ -87,6 +87,12 @@ const routes = [
         component: () => import("@/views/user/admin/ShowQuestionsInfo.vue"),
       },
       {
+        path: "teacher/ShowHistoryThisClassScoresView",
+        name: "ShowHistoryThisClassScoresView",
+        component: () =>
+          import("@/views/user/teacher/ShowHistoryThisClassScoresView.vue"),
+      },
+      {
         path: "teacher/ShowThisClassStudent",
         name: "ShowThisClassStudent",
         component: () =>

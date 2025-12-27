@@ -11,18 +11,18 @@ import java.util.List;
 @Mapper
 public interface UndeterminedUserDao {
 
-    List<UndeterminedUser> getAllUndeterminedUserPage(@Param("real_name") String real_name,
+    List<UndeterminedUser> getAllUndeterminedUserPage(@Param("realName") String realName,
                                                       @Param("role") String role,
                                                       @Param("pageIndex") Integer pageIndex,
                                                       @Param("pageSize") Integer pageSize,
                                                       @Param("level") String level,
-                                                      @Param("class_id") Integer class_id
+                                                      @Param("classId") Integer classId
     );
 
-    Integer getAllUndeterminedUserCount(@Param("real_name") String real_name,
-                                        @Param("role") String role, @Param("level") String level, @Param("class_id") Integer class_id);
+    Integer getAllUndeterminedUserCount(@Param("realName") String realName,
+                                        @Param("role") String role, @Param("level") String level, @Param("classId") Integer classId);
 
-    @Delete("delete from undetermined_users where user_id = #{user_id}")
-    Integer deleteUndeterminedUser(@Param("user_id") Integer user_id);
+    @Delete("delete from undetermined_users where user_id = #{userId}")
+    Integer deleteUndeterminedUser(@Param("userId") Integer userId);
 
 }

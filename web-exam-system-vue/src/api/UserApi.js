@@ -21,10 +21,10 @@ export function showUserListPage(params) {
     params: params,
   });
 }
-export function deleteUser(user_id) {
+export function deleteUser(userId) {
   return request.delete("/user/deleteUser", {
     params: {
-      user_id,
+      userId,
     },
   });
 }
@@ -38,18 +38,32 @@ export function getAllUndeterminedUserPage(params) {
     params: params,
   });
 }
-export function deleteUndeterminedUser(user_id) {
+export function deleteUndeterminedUser(userId) {
   return request.delete("/undeterminedUser/deleteUndeterminedUser", {
     params: {
-      user_id,
+      userId,
     },
   });
 }
-export function updatePassword(password, user_id) {
+export function updatePassword(password, userId) {
   return request.put("/user/updatePassword", null, {
     params: {
       password: password,
-      user_id: user_id,
+      userId: userId,
+    },
+  });
+}
+export function getUserIdByClassId(classId) {
+  return request.get("/user/getUserIdByClassId", {
+    params: {
+      classId: classId,
+    },
+  });
+}
+export function getRealNameByUserId(userId) {
+  return request.get("/user/getRealNameByUserId", {
+    params: {
+      userId: userId,
     },
   });
 }

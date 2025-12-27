@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface QuestionsDao {
 
-    @Insert("insert into questions(chapter_id,content,type,options,answer,base_score,explanation,difficulty,created_by,created_at) values(#{chapter_id},#{content},#{type},#{options},#{answer},#{base_score},#{explanation},#{difficulty},#{created_by},#{created_at})")
+    @Insert("insert into questions(chapter_id,content,type,options,answer,base_score,explanation,difficulty,created_by,created_at) values(#{chapterId},#{content},#{type},#{options},#{answer},#{baseScore},#{explanation},#{difficulty},#{createdBy},#{createdAt})")
     Integer addTitle(Questions  questions);
 
     List<Questions> getRandomTitleSingleChoice(ExamBo examBo);

@@ -50,19 +50,19 @@ export default {
       difficult: [
         {
           difficult: "all",
-          difficult_name: "所有难度",
+          difficultName: "所有难度",
         },
         {
           difficult: "easy",
-          difficult_name: "简单",
+          difficultName: "简单",
         },
         {
           difficult: "middle",
-          difficult_name: "中等",
+          difficultName: "中等",
         },
         {
           difficult: "hard",
-          difficult_name: "困难",
+          difficultName: "困难",
         },
       ],
       conditionalRetrieval: {
@@ -130,7 +130,7 @@ export default {
       this.conditionalRetrieval.testExamTime = tempMin;
       this.conditionalRetrieval.createId = JSON.parse(
         window.sessionStorage.getItem("user")
-      ).user_id;
+      ).userId;
       this.conditionalRetrieval.createTime = new Date();
       this.conditionalRetrieval.endTime =
         this.conditionalRetrieval.startTime[1];
@@ -388,7 +388,7 @@ export default {
             <el-option
               v-for="item in chapters"
               :key="item.chapterId"
-              :label="item.chapter_name"
+              :label="item.chapterName"
               :value="item.chapterId"
             ></el-option>
           </el-select>
@@ -416,7 +416,7 @@ export default {
             <el-option
               v-for="item in difficult"
               :key="item.difficult"
-              :label="item.difficult_name"
+              :label="item.difficultName"
               :value="item.difficult"
             ></el-option>
           </el-select>

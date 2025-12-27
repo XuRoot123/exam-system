@@ -19,5 +19,8 @@ public class ClassesServiceImpl implements ClassesService{
         return classesDao.getAllClasses();
     }
 
-
+    @Override
+    public int getAllClassIdByTeacherId(int teacherId) {
+        return classesDao.getAllClassIdByTeacherId(teacherId);
+    }
 }

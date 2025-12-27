@@ -13,16 +13,20 @@ public interface UserService {
 
     int insertUser(User user);
 
-    PageEntity<User> getAllUserPage(String real_name, String role,
+    PageEntity<User> getAllUserPage(String realName, String role,
                                     Integer pageIndex,
                                     Integer pageSize);
 
     Integer deleteUser(Integer user_id);
 
-    PageEntity<User> getUserByClassId(Integer user_id,
-                          String real_name,
+    PageEntity<User> getUserByClassId(Integer userId,
+                          String realName,
                           String role,
                           Integer pageIndex,
                           Integer pageSize);
-    int updatePassword(String password , Integer user_id);
+    int updatePassword(String password , Integer userId);
+
+    List<Integer> getUserIdByClassId(Integer classId);
+
+    String getRealNameByUserId(Integer userId);
 }

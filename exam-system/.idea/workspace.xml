@@ -5,29 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="676c0612-a600-446f-a874-785f0a402968" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/exam/WrongQuestionsListView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/student/ShowHistoryScoresView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ShowHistoryThisClassScoresView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/classes/ClassesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/classes/ClassesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/wrongAnswers/WrongAnswersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/wrongAnswers/WrongAnswersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/undetermineduser/UndeterminedUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/undetermineduser/UndeterminedUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/ClassesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/ClassesDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/WrongAnswersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/WrongAnswersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/WrongAnswersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/WrongAnswersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/WrongAnswersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/WrongAnswersServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/UndeterminedUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/UndeterminedUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/UndeterminedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/UndeterminedUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/ClassesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/ClassesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/ClassesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/ClassesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UndeterminedUserDaoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UndeterminedUserDaoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDaoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDaoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/wrongAnswers/WrongAnswersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/wrongAnswers/WrongAnswersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/undetermineduser/UndeterminedUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/undetermineduser/UndeterminedUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/WrongAnswersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/WrongAnswersDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/WrongAnswersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/WrongAnswersService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/WrongAnswersServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/WrongAnswersServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/UndeterminedUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/UndeterminedUserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/UndeterminedUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/entity/UndeterminedUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UndeterminedUserDaoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UndeterminedUserDaoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserDaoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserDaoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/ClassesApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/ClassesApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/WrongAnswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/WrongAnswers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/student/AsideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/student/AsideMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/UserApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/UserApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/teacher/AsideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/layout/components/user/teacher/AsideMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/EnrollView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/EnrollView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/admin/ShowQuestionsInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/admin/ShowQuestionsInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/admin/ShowUserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/admin/ShowUserInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/student/ShowHistoryScoresView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/student/ShowHistoryScoresView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/student/ShowWrongQuestionsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/student/ShowWrongQuestionsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/system/UpdatePassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/system/UpdatePassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ReadTitle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ReadTitle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SelfCompiledVolume.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SelfCompiledVolume.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ShowEnterClassApplication.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ShowEnterClassApplication.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ShowThisClassStudent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/ShowThisClassStudent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SystemCompilation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SystemCompilation.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,33 +79,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.exam-system [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exam-system [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ExamSystemApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/java/web-exam-system/exam-system/src/main/java/cn/com/xuroot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.exam-system [clean].executor": "Run",
+    "Maven.exam-system [compile].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ExamSystemApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/java/web-exam-system/exam-system/src/main/java/cn/com/xuroot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java\web-exam-system\exam-system\src\main\java\cn\com\xuroot" />
@@ -177,7 +196,8 @@
       <workItem from="1766283764730" duration="2202000" />
       <workItem from="1766514370106" duration="8665000" />
       <workItem from="1766599516224" duration="816000" />
-      <workItem from="1766733509883" duration="2352000" />
+      <workItem from="1766733509883" duration="8781000" />
+      <workItem from="1766825556301" duration="5536000" />
     </task>
     <servers />
   </component>

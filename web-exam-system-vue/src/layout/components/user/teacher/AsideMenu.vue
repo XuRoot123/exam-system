@@ -23,7 +23,7 @@
       </el-menu-item-group>
       <el-menu-item-group>
         <template slot="title">考试</template>
-        <el-menu-item index="/supplier">
+        <el-menu-item index="/home/teacher/ShowHistoryThisClassScoresView">
           <i class="el-icon-setting"></i>
           <span slot="title">查看历史考试记录</span>
         </el-menu-item>

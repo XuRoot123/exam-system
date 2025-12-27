@@ -21,9 +21,9 @@ public class UndeterminedUserController {
     @GetMapping("/teacher/getAllUndeterminedUserPage")
     @Operation(summary = "获取所有待定用户")
     public ResponseResult<PageEntity<UndeterminedUser>> getAllUndeterminedUserPage(
-            @Parameter(name = "real_name", description = "真实名字，可通过模糊查询查找")
+            @Parameter(name = "realName", description = "真实名字，可通过模糊查询查找")
             @RequestParam(required = false)
-            String real_name,
+            String realName,
             @Parameter(name = "role", description = "角色")
             @RequestParam(required = false)
             String role,
@@ -33,26 +33,27 @@ public class UndeterminedUserController {
             @Parameter(name = "pageSize", description = "每页数量")
             @RequestParam
             Integer pageSize,
-            @Parameter(name = "user_id", description = "用户id")
+            @Parameter(name = "userId", description = "用户id")
             @RequestParam
-            Integer user_id
+            Integer userId
     ) {
         PageEntity<UndeterminedUser> undeterminedUserPageEntity =
                 undeterminedUserService.getAllUndeterminedUserPage
-                        (real_name, role, pageIndex, pageSize, "teacher", user_id);
+                        (realName, role, pageIndex, pageSize, "teacher", userId);
         if (undeterminedUserPageEntity != null) {
             return ResponseResult.success(undeterminedUserPageEntity);
         }
         return ResponseResult.success(null);
     }
+
     @DeleteMapping("/deleteUndeterminedUser")
     @Operation(summary = "删除待定用户")
     public ResponseResult<Integer> deleteUndeterminedUser(
-            @Parameter(name = "user_id", description = "用户id")
+            @Parameter(name = "userId", description = "用户id")
             @RequestParam
-            Integer user_id
+            Integer userId
     ) {
-        Integer result = undeterminedUserService.deleteUndeterminedUser(user_id);
+        Integer result = undeterminedUserService.deleteUndeterminedUser(userId);
         if (result > 0) {
             return ResponseResult.success(result);
         }

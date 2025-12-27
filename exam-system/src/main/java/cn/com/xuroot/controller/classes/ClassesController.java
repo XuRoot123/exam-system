@@ -26,4 +26,10 @@ public class ClassesController {
         List<Classes> allClasses = classesService.getAllClasses();
         return allClasses != null ? ResponseResult.success(allClasses) : ResponseResult.error(-1, "服务器出错！");
     }
+    @GetMapping("/getAllClassIdByTeacherId")
+    @Operation(summary = "获取指定教师的班级")
+    public ResponseResult<Integer>getAllClassIdByTeacherId(Integer teacherId) {
+        Integer allClassIdByTeacherId = classesService.getAllClassIdByTeacherId(teacherId);
+        return allClassIdByTeacherId != 0 ? ResponseResult.success(allClassIdByTeacherId) : ResponseResult.error(-1, "服务器出错！");
+    }
 }

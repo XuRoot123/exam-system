@@ -8,8 +8,8 @@ export default {
       type: "",
       types: ["student", "teacher", "admin"],
       user: {
-        userName: "stu_li",
-        password: "li123",
+        userName: "teacher_zhang",
+        password: "zhang123",
       },
     };
   },
@@ -55,7 +55,8 @@ export default {
     },
     getAllClass() {
       getAllClass().then((res) => {
-        window.sessionStorage.setItem("classes", JSON.stringify(res.data));
+        const filteredData = res.data.filter((item) => item.classId !== 3);
+        window.sessionStorage.setItem("classes", JSON.stringify(filteredData));
       });
     },
     handleKeyDown(event) {

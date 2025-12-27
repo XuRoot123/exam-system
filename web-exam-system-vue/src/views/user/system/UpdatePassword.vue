@@ -9,7 +9,7 @@ export default {
         newPassword: "",
       },
       password: "",
-      user_id: "",
+      userId: "",
       updatePassword: false,
     };
   },
@@ -18,7 +18,7 @@ export default {
       this.password = JSON.parse(
         window.sessionStorage.getItem("user")
       ).password;
-      this.user_id = JSON.parse(window.sessionStorage.getItem("user")).user_id;
+      this.userId = JSON.parse(window.sessionStorage.getItem("user")).userId;
     },
     checkPassword() {
       if (this.updateData.newPassword !== this.updateData.password) {
@@ -41,7 +41,7 @@ export default {
     },
     update() {
       if (this.checkPassword()) {
-        updatePassword(this.updateData.newPassword, this.user_id)
+        updatePassword(this.updateData.newPassword, this.userId)
           .then(() => {
             this.$message.success("修改成功");
             this.updatePassword = false;

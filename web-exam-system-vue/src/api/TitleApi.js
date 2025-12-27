@@ -14,10 +14,10 @@ export function getAllTitle(type) {
     },
   });
 }
-export function deleteTitle(question_id) {
+export function deleteTitle(questionId) {
   return request.delete("/questions/deleteTitle", {
     params: {
-      question_id: question_id,
+      questionId: questionId,
     },
   });
 }

@@ -6,22 +6,22 @@ export default {
     return {
       showClassSelect: true,
       role: "",
-      undetermined_users: {
+      undeterminedUsers: {
         userName: "",
         password: "",
-        real_name: "",
+        realName: "",
         email: "",
         phone: "",
         role: "",
-        class_id: "",
+        classId: "",
         sex: "1",
         level: "",
-        created_at: "",
+        createdAt: "",
       },
       classes: [
         {
-          class_id: "",
-          class_name: "",
+          classId: "",
+          className: "",
         },
       ],
       nextRole: "",
@@ -40,7 +40,6 @@ export default {
             trigger: "blur",
           },
         ],
-        // role: [{ required: true, message: "请选择职位", trigger: "change" }],
         phone: [
           {
             required: true,
@@ -49,7 +48,7 @@ export default {
             trigger: "blur",
           },
         ],
-        real_name: [
+        realName: [
           { required: true, message: "请输入真实姓名", trigger: "blur" },
           { min: 2, max: 5, message: "长度在 2 到 5 个字符", trigger: "blur" },
         ],
@@ -64,15 +63,14 @@ export default {
         return;
       }
       await this.initializationUserInfo();
-      console.log(this.undetermined_users);
       if (
-        this.undetermined_users.role !== "" &&
-        this.undetermined_users.role !== "admin"
+        this.undeterminedUsers.role !== "" &&
+        this.undeterminedUsers.role !== "admin"
       ) {
-        enrollSchoolUser(this.undetermined_users)
+        enrollSchoolUser(this.undeterminedUsers)
           .then(() => {
             this.$alert(
-              `你的级别为${this.undetermined_users.role},请联系${this.undetermined_users.level}为你同意注册！`,
+              `你的级别为${this.undeterminedUsers.role},请联系${this.undeterminedUsers.level}为你同意注册！`,
               `提示`
             );
             this.$router.push("/login");
@@ -81,11 +79,11 @@ export default {
             this.$message.error(err.message);
           });
       } else {
-        this.undetermined_users.created_at = new Date().toLocaleString();
-        enroll(this.undetermined_users)
+        this.undeterminedUsers.createdAt = new Date().toLocaleString();
+        enroll(this.undeterminedUsers)
           .then(() => {
             this.$alert(
-              "注册成功你的级别是：" + this.undetermined_users.role,
+              "注册成功你的级别是：" + this.undeterminedUsers.role,
               "提示"
             );
             this.$router.push("/login");
@@ -102,42 +100,42 @@ export default {
         admin: 3,
       };
       const roleInt = roleMap[this.role] || 0;
-      this.undetermined_users.role = this.role;
+      this.undeterminedUsers.role = this.role;
       var number = (roleInt * 2) / 2;
       this.nextRole = 0;
       this.nextRole = number + 1;
       console.log(this.nextRole);
       if (this.nextRole === 2) {
-        this.undetermined_users.level = "admin";
+        this.undeterminedUsers.level = "admin";
       }
       if (this.nextRole === 3) {
-        this.undetermined_users.level = "teacher";
+        this.undeterminedUsers.level = "teacher";
       }
-      switch (this.undetermined_users.role) {
+      switch (this.undeterminedUsers.role) {
         case "1":
-          this.undetermined_users.role = "teacher";
+          this.undeterminedUsers.role = "teacher";
           break;
         case "2":
-          this.undetermined_users.role = "student";
+          this.undeterminedUsers.role = "student";
           break;
         case "3":
-          this.undetermined_users.role = "admin";
+          this.undeterminedUsers.role = "admin";
           break;
       }
-      switch (this.undetermined_users.sex) {
+      switch (this.undeterminedUsers.sex) {
         case "1":
-          this.undetermined_users.sex = "男";
+          this.undeterminedUsers.sex = "男";
           break;
-        case "2":
-          this.undetermined_users.sex = "女";
+        case "0":
+          this.undeterminedUsers.sex = "女";
           break;
       }
-      switch (this.undetermined_users.sex) {
+      switch (this.undeterminedUsers.sex) {
         case "男":
-          this.undetermined_users.sex = "1";
+          this.undeterminedUsers.sex = "1";
           break;
         case "女":
-          this.undetermined_users.sex = "2";
+          this.undeterminedUsers.sex = "0";
           break;
       }
     },
@@ -147,8 +145,8 @@ export default {
       let itemTemp = [{}];
       for (let i = 0; i < item.length; i++) {
         itemTemp[i] = {
-          class_id: item[i].class_id,
-          class_name: item[i].class_name,
+          classId: item[i].classId,
+          className: item[i].className,
         };
       }
       this.classes = itemTemp;
@@ -166,10 +164,10 @@ export default {
         const adminRoles = ["admin", "3", "管理员", "teacher", "教师", "2"];
         if (adminRoles.includes(newVal)) {
           this.showClassSelect = false;
-          this.undetermined_users.class_id = "";
+          this.undeterminedUsers.classId = "";
         } else {
           this.showClassSelect = true;
-          this.undetermined_users.class_id = "";
+          this.undeterminedUsers.classId = "";
         }
       },
       immediate: false,
@@ -184,36 +182,36 @@ export default {
       <el-form
         :rules="rules"
         ref="form"
-        :model="undetermined_users"
+        :model="undeterminedUsers"
         label-width="120px"
         class="demo-ruleForm"
       >
         <h2>enroll</h2>
         <el-form-item label="名称" prop="userName">
-          <el-input v-model="undetermined_users.userName"></el-input>
+          <el-input v-model="undeterminedUsers.userName"></el-input>
         </el-form-item>
         <el-form-item label="真实姓名" prop="realName">
-          <el-input v-model="undetermined_users.real_name"></el-input>
+          <el-input v-model="undeterminedUsers.realName"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input
-            v-model="undetermined_users.password"
+            v-model="undeterminedUsers.password"
             type="password"
             show-password
           ></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex">
-          <el-radio v-model="undetermined_users.sex" label="1">男</el-radio>
-          <el-radio v-model="undetermined_users.sex" label="2">女</el-radio>
+          <el-radio v-model="undeterminedUsers.sex" label="1">男</el-radio>
+          <el-radio v-model="undeterminedUsers.sex" label="0">女</el-radio>
         </el-form-item>
         <el-form-item prop="phone" label="手机号">
           <el-input
             oninput="value=value.replace(/[^0-9]/g,'')"
-            v-model="undetermined_users.phone"
+            v-model="undeterminedUsers.phone"
           ></el-input>
         </el-form-item>
         <el-form-item prop="email" label="邮箱">
-          <el-input v-model="undetermined_users.email"></el-input>
+          <el-input v-model="undeterminedUsers.email"></el-input>
         </el-form-item>
         <el-form-item prop="role" label="职位">
           <el-select v-model="role" filterable placeholder="请选择">
@@ -232,15 +230,15 @@ export default {
           style="display: block"
         >
           <el-select
-            v-model="undetermined_users.class_id"
+            v-model="undeterminedUsers.classId"
             filterable
             placeholder="请选择"
           >
             <el-option
               v-for="item in classes"
-              :key="item.class_id"
-              :label="item.class_name"
-              :value="item.class_id"
+              :key="item.classId"
+              :label="item.className"
+              :value="item.classId"
             >
             </el-option>
           </el-select>

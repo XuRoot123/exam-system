@@ -10,14 +10,14 @@ export default {
     return {
       tempUserList: [],
       user: {
-        user_id: "",
+        userId: "",
         userName: "",
-        real_name: "",
+        realName: "",
         email: "",
         phone: "",
         role: "",
-        class_id: "",
-        created_at: "",
+        classId: "",
+        createdAt: "",
       },
       pageSizes: [5, 10, 20],
       total: 0,
@@ -25,13 +25,13 @@ export default {
       currentPage: 1,
       pageIndex: 1,
       params: {
-        user_id: JSON.parse(window.sessionStorage.getItem("user")).user_id,
+        userId: JSON.parse(window.sessionStorage.getItem("user")).userId,
         pageIndex: this.pageIndex,
         pageSize: this.choosePageSize,
-        real_name: this.real_name,
+        realName: this.realName,
         role: this.role,
       },
-      real_name: "",
+      realName: "",
     };
   },
   methods: {
@@ -41,13 +41,13 @@ export default {
       if (
         params.pageIndex === undefined ||
         params.pageSize === undefined ||
-        params.teacher_id === undefined
+        params.teacherId === undefined
       ) {
         params = {
-          user_id: JSON.parse(window.sessionStorage.getItem("user")).user_id,
+          userId: JSON.parse(window.sessionStorage.getItem("user")).userId,
           pageIndex: 1,
           pageSize: 5,
-          real_name: "",
+          realName: "",
           role: "",
         };
         await getAllUndeterminedUserPage(params)
@@ -82,7 +82,7 @@ export default {
         confirmButtonText: "我已知晓后果，确定删除该用户！",
       })
         .then(() => {
-          return deleteUndeterminedUser(row.user_id)
+          return deleteUndeterminedUser(row.userId)
             .then((res) => {
               if (res.data === 1) {
                 this.$message.success("删除成功！");
@@ -102,9 +102,9 @@ export default {
         });
     },
     loadUserListLike() {
-      this.real_name = this.real_name.trim();
+      this.realName = this.realName.trim();
       this.params.pageIndex = 1;
-      this.params.real_name = this.real_name;
+      this.params.realName = this.realName;
       this.loadUserList();
     },
     changePageSize(p) {
@@ -129,19 +129,19 @@ export default {
     },
     initializationData() {
       if (
-        this.tempUserList.class_id === "" ||
-        this.tempUserList.class_id === null
+        this.tempUserList.classId === "" ||
+        this.tempUserList.classId === null
       ) {
-        this.tempUserList.class_id = "无";
+        this.tempUserList.classId = "无";
       }
       this.choosePageSize = this.pageSizes[0];
       this.params.pageIndex = 1;
       this.params.pageSize = 5;
-      this.params.real_name = this.real_name;
+      this.params.realName = this.realName;
       this.loadUserList();
     },
     setSex(user) {
-      if (user.sex === "1") {
+      if (user.sex === 1) {
         user.sex = "男";
       } else {
         user.sex = "女";
@@ -151,17 +151,17 @@ export default {
       if (user.sex === "男") {
         user.sex = 1;
       } else {
-        user.sex = 2;
+        user.sex = 0;
       }
       return user;
     },
     enrollUser(row) {
       var user = this.reverseSideSetSex(row);
-      user.created_at = new Date().toLocaleString();
+      user.createdAt = new Date().toLocaleString();
       enroll(user)
         .then((res) => {
           if (res.data === 1) {
-            return deleteUndeterminedUser(row.user_id)
+            return deleteUndeterminedUser(row.userId)
               .then(() => {
                 this.$message.success("添加成功");
                 this.loadUserList();
@@ -191,7 +191,7 @@ export default {
     <el-input
       style="width: 20%"
       placeholder="请输入你要查找的名字："
-      v-model="real_name"
+      v-model="realName"
       @blur="loadUserListLike"
       clearable
     ></el-input>
@@ -202,14 +202,14 @@ export default {
       >查找
     </el-button>
     <el-table :data="tempUserList" stripe style="width: 100%">
-      <el-table-column prop="user_id" label="id" width="180"></el-table-column>
+      <el-table-column prop="userId" label="id" width="180"></el-table-column>
       <el-table-column
         prop="userName"
         label="用户名"
         width="180"
       ></el-table-column>
       <el-table-column
-        prop="real_name"
+        prop="realName"
         label="姓名"
         width="180"
       ></el-table-column>
@@ -220,7 +220,7 @@ export default {
         width="180"
       ></el-table-column>
       <el-table-column
-        prop="class_id"
+        prop="classId"
         label="班级编号"
         width="180"
       ></el-table-column>
