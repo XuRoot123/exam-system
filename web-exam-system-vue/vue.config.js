@@ -10,8 +10,17 @@ module.exports = defineConfig({
     },
   },
   devServer: {
+    host: "0.0.0.0",
     port: 8000,
     open: true,
-    proxy: "http://localhost:7000",
+    proxy: {
+      "/api": {
+        target: process.env.VUE_APP_API_URL || "http://localhost:7000",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "",
+        },
+      },
+    },
   },
 });
