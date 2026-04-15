@@ -27,34 +27,6 @@ public class ExamServiceImpl implements ExamService {
     private ScoresDao scoresDao;
 
     @Override
-    @Transactional
-    public int addRandomTestPaper(ExamBo examBo) {
-        List<Questions> questions = this.smartRandomTitle(examBo);
-        int score = 0;
-        for (Questions question : questions) {
-            score += question.getBaseScore();
-        }
-        examBo.setTotalScore(score);
-        if (examBo.getStartTime().getTime() > System.currentTimeMillis() && examBo.getEndTime().getTime() < System.currentTimeMillis())
-            examBo.setStatus("draft");
-        else {
-            examBo.setStatus("published");
-        }
-        int examPapersCount = examDao.addExamPapers(examBo);
-        if (examPapersCount <= 0) {
-            return -1;
-        } else {
-            ExamPapers examPapersById = examDao.getExamPapersById(examBo.getPaperId());
-            int resultExamsCount = this.addExams(examPapersById, examBo);
-            if (resultExamsCount > 0) {
-                return this.addPaperQuestions(questions, examBo.getPaperId()) > 0 ? 1 : -1;
-            } else {
-                return -1;
-            }
-        }
-    }
-
-    @Override
     public int addTestPaper(ExamBo examBo) {
         Questions[] questions = examBo.getQuestions();
         List<Questions> questionsList = new ArrayList<>(Arrays.asList(questions));
@@ -231,9 +203,6 @@ public class ExamServiceImpl implements ExamService {
         }
         return 1;
     }
-
-    // ... existing code ...
-
     @Transactional
     public List<Questions> randomTitle(ExamBo examBo) {
         List<Questions> questionsList = new ArrayList<>();
@@ -243,6 +212,33 @@ public class ExamServiceImpl implements ExamService {
         return questionsList;
     }
 
+    @Override
+    @Transactional
+    public int addRandomTestPaper(ExamBo examBo) {
+        List<Questions> questions = this.smartRandomTitle(examBo);
+        int score = 0;
+        for (Questions question : questions) {
+            score += question.getBaseScore();
+        }
+        examBo.setTotalScore(score);
+        if (examBo.getStartTime().getTime() > System.currentTimeMillis() && examBo.getEndTime().getTime() < System.currentTimeMillis())
+            examBo.setStatus("draft");
+        else {
+            examBo.setStatus("published");
+        }
+        int examPapersCount = examDao.addExamPapers(examBo);
+        if (examPapersCount <= 0) {
+            return -1;
+        } else {
+            ExamPapers examPapersById = examDao.getExamPapersById(examBo.getPaperId());
+            int resultExamsCount = this.addExams(examPapersById, examBo);
+            if (resultExamsCount > 0) {
+                return this.addPaperQuestions(questions, examBo.getPaperId()) > 0 ? 1 : -1;
+            } else {
+                return -1;
+            }
+        }
+    }
     private List<Questions> smartRandomTitle(ExamBo examBo) {
         List<Questions> finalQuestions = new ArrayList<>();
         Set<Integer> usedQuestionIds = new HashSet<>();

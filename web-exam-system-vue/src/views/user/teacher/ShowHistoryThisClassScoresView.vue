@@ -122,7 +122,7 @@ export default {
     },
     completeChoiceChapter() {
       this.showFindAllExam = false;
-      getExamHistoryByChapterAndUserId(this.userId, this.choiceChapter)
+      getExamHistoryByChapterAndUserId(this.teacherId, this.choiceChapter)
         .then((res) => {
           this.exams = res.data;
           this.mergeDataSources();
