@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const INSTANCE = axios.create({
-  baseURL: "http://192.168.241.231:7000",
+  baseURL: "http://localhost:7000",
   timeout: 10000,
 });
 
@@ -36,5 +36,18 @@ INSTANCE.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+INSTANCE.interceptors.request.use(function (config) {
+  console.log(
+    "请求开始:",
+    config.method.toUpperCase(),
+    config.url,
+    new Date().toLocaleTimeString()
+  );
+  const token = window.sessionStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = token;
+  }
+  return config;
+});
 
 export default INSTANCE;

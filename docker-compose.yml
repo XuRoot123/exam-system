@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: exam-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: muzichuan26
+      MYSQL_DATABASE: exam_system
+    ports:
+      - "3307:3306"          # 映射到宿主机3307，避免与本机MySQL冲突
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  backend:
+    image: web-exam-system-java
+    container_name: exam-backend
+    ports:
+      - "7000:7000"
+    depends_on:
+      - mysql
+    environment:
+      # 如果镜像支持环境变量覆盖，可以在这里指定（可选）
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/exam_system?useSSL=false&serverTimezone=Asia/Shanghai
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: muzichuan26
+    restart: unless-stopped
+
+  frontend:
+    image: web-exam-system-html
+    container_name: exam-frontend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

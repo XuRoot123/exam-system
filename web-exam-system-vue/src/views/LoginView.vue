@@ -1,11 +1,13 @@
 <script>
-import { login } from "@/api/UserApi";
+import { login, testButton } from "@/api/UserApi";
 import { getAllClass } from "@/api/ClassesApi";
 
 export default {
   data() {
     return {
       type: "",
+      test: "",
+      showTest: false,
       types: ["student", "teacher", "admin"],
       user: {
         userName: "teacher_zhang",
@@ -64,6 +66,16 @@ export default {
         this.login();
       }
     },
+    testButton() {
+      testButton(this.test)
+        .then((res) => {
+          this.test = res.data.data;
+          this.showTest = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted() {
     this.checkUserLogin();
@@ -89,6 +101,18 @@ export default {
       <div class="input-wrapper">
         <el-button type="primary" @click="enroll">注册</el-button>
       </div>
+    </div>
+    <div>
+      <h2>账号密码：</h2>
+      <p>如果你想体验学生环境下的登录你可以填写以下信息进行登录：</p>
+      <p>账号：stu_li</p>
+      <p>密码：li_123</p>
+      <p>如果你想体验教师环境下的登录你可以填写以下信息进行登录：</p>
+      <p>账号：teacher_zhang</p>
+      <p>密码：zhang123</p>
+      <p>如果你想体验管理员环境下的登录你可以填写以下信息进行登录：</p>
+      <p>账号：admin</p>
+      <p>密码：admin123</p>
     </div>
     <div
       style="

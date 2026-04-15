@@ -2,13 +2,11 @@ package cn.com.xuroot.dao;
 
 import cn.com.xuroot.bo.ExamBo;
 import cn.com.xuroot.entity.Questions;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface QuestionsDao {
@@ -34,4 +32,7 @@ public interface QuestionsDao {
 
     @Select("select * from questions where question_id = #{questionId}")
     Questions getQuestionsByQuestionId(Integer questionId);
+
+    @Select("SELECT question_id, COUNT(*) as count FROM paper_questions GROUP BY question_id ORDER BY count DESC LIMIT #{limit}")
+    List<Map<String, Object>> getHotQuestions(@Param("limit") int limit);
 }

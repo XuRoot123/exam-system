@@ -2,7 +2,9 @@ package cn.com.xuroot.controller.user;
 
 import cn.com.xuroot.common.pojo.PageEntity;
 import cn.com.xuroot.common.pojo.ResponseResult;
+import cn.com.xuroot.entity.Test;
 import cn.com.xuroot.entity.UndeterminedUser;
+import cn.com.xuroot.service.TestService;
 import cn.com.xuroot.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,6 +23,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    TestService testService;
 
     @PostMapping("/login")
     @Operation(summary = "用户登录")
@@ -113,5 +118,10 @@ public class UserController {
     public ResponseResult<String> getRealNameByUserId(@Parameter(name = "userId", description = "用户id") @RequestParam Integer userId) {
         String realName = userService.getRealNameByUserId(userId);
         return realName == null  ? ResponseResult.error(-1, "获取用户真实名字失败") : ResponseResult.success(realName);
+    }
+    @GetMapping("/testButton")
+    public ResponseResult<Test> testButton(@RequestParam String test){
+        Test test1 = testService.testButton(test);
+        return test1!=null?ResponseResult.success(test1) : ResponseResult.error(400,"输入为空或太长");
     }
 }

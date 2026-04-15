@@ -25,5 +25,6 @@ public class ExamBo {
     private Integer difficult;
     private Integer classId;
     private Integer paperId;
+    private String type;
     private Questions[] questions;
 }

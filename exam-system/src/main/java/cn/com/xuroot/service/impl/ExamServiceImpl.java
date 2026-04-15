@@ -29,7 +29,7 @@ public class ExamServiceImpl implements ExamService {
     @Override
     @Transactional
     public int addRandomTestPaper(ExamBo examBo) {
-        List<Questions> questions = this.randomTitle(examBo);
+        List<Questions> questions = this.smartRandomTitle(examBo);
         int score = 0;
         for (Questions question : questions) {
             score += question.getBaseScore();
@@ -232,6 +232,8 @@ public class ExamServiceImpl implements ExamService {
         return 1;
     }
 
+    // ... existing code ...
+
     @Transactional
     public List<Questions> randomTitle(ExamBo examBo) {
         List<Questions> questionsList = new ArrayList<>();
@@ -239,5 +241,142 @@ public class ExamServiceImpl implements ExamService {
         questionsList.addAll(questionsDao.getRandomTitleMultipleChoice(examBo));
         questionsList.addAll(questionsDao.getRandomTitleJudge(examBo));
         return questionsList;
+    }
+
+    private List<Questions> smartRandomTitle(ExamBo examBo) {
+        List<Questions> finalQuestions = new ArrayList<>();
+        Set<Integer> usedQuestionIds = new HashSet<>();
+
+        Integer singleCount = examBo.getSingleChoiceCount() != null ? examBo.getSingleChoiceCount() : 0;
+        Integer multipleCount = examBo.getMultipleChoiceCount() != null ? examBo.getMultipleChoiceCount() : 0;
+        Integer judgeCount = examBo.getJudgeCount() != null ? examBo.getJudgeCount() : 0;
+
+        if (singleCount > 0) {
+            List<Questions> singleChoices = selectQuestionsByDifficulty(examBo, "single_choice", singleCount, usedQuestionIds);
+            finalQuestions.addAll(singleChoices);
+            usedQuestionIds.addAll(singleChoices.stream().map(Questions::getQuestionId).toList());
+        }
+
+        if (multipleCount > 0) {
+            List<Questions> multipleChoices = selectQuestionsByDifficulty(examBo, "multiple_choice", multipleCount, usedQuestionIds);
+            finalQuestions.addAll(multipleChoices);
+            usedQuestionIds.addAll(multipleChoices.stream().map(Questions::getQuestionId).toList());
+        }
+
+        if (judgeCount > 0) {
+            List<Questions> judges = selectQuestionsByDifficulty(examBo, "judge", judgeCount, usedQuestionIds);
+            finalQuestions.addAll(judges);
+            usedQuestionIds.addAll(judges.stream().map(Questions::getQuestionId).toList());
+        }
+
+        Collections.shuffle(finalQuestions);
+
+        return finalQuestions;
+    }
+
+    private List<Questions> selectQuestionsByDifficulty(ExamBo examBo, String questionType, int requiredCount, Set<Integer> usedIds) {
+        List<Questions> selectedQuestions = new ArrayList<>();
+
+        Integer difficulty = examBo.getDifficult();
+
+        boolean isRandomDifficulty = (difficulty == null || difficulty == 0);
+
+        if (isRandomDifficulty) {
+            List<Questions> candidates = getAllQuestionsOfType(examBo, questionType, usedIds);
+
+            Collections.shuffle(candidates);
+
+            int selectCount = Math.min(requiredCount, candidates.size());
+            for (int i = 0; i < selectCount; i++) {
+                selectedQuestions.add(candidates.get(i));
+            }
+        } else {
+            ExamBo difficultyExamBo = cloneExamBo(examBo);
+            difficultyExamBo.setDifficult(difficulty);
+            difficultyExamBo.setType(questionType);
+
+            List<Questions> difficultyQuestions = getQuestionsByType(difficultyExamBo);
+
+            difficultyQuestions.removeIf(q -> usedIds.contains(q.getQuestionId()));
+
+            Collections.shuffle(difficultyQuestions);
+
+            int selectCount = Math.min(requiredCount, difficultyQuestions.size());
+            for (int i = 0; i < selectCount; i++) {
+                selectedQuestions.add(difficultyQuestions.get(i));
+            }
+
+            int remainingCount = requiredCount - selectedQuestions.size();
+            if (remainingCount > 0) {
+                List<Questions> Questions = getAllQuestionsOfType(examBo, questionType, usedIds);
+                 Questions.removeAll(selectedQuestions);
+
+                Collections.shuffle( Questions);
+                int  Count = Math.min(remainingCount,  Questions.size());
+                for (int i = 0; i <  Count; i++) {
+                    selectedQuestions.add( Questions.get(i));
+                }
+            }
+        }
+
+        return selectedQuestions;
+    }
+
+    private List<Questions> getAllQuestionsOfType(ExamBo examBo, String questionType, Set<Integer> usedIds) {
+        List<Questions> allQuestions = new ArrayList<>();
+
+        ExamBo tempExamBo = cloneExamBo(examBo);
+        tempExamBo.setType(questionType);
+
+        switch (questionType) {
+            case "single_choice":
+                allQuestions.addAll(questionsDao.getRandomTitleSingleChoice(tempExamBo));
+                break;
+            case "multiple_choice":
+                allQuestions.addAll(questionsDao.getRandomTitleMultipleChoice(tempExamBo));
+                break;
+            case "judge":
+                allQuestions.addAll(questionsDao.getRandomTitleJudge(tempExamBo));
+                break;
+        }
+
+        allQuestions.removeIf(q -> usedIds.contains(q.getQuestionId()));
+
+        return allQuestions;
+    }
+
+    private ExamBo cloneExamBo(ExamBo source) {
+        ExamBo cloned = new ExamBo();
+        cloned.setExamId(source.getExamId());
+        cloned.setExamName(source.getExamName());
+        cloned.setStartTime(source.getStartTime());
+        cloned.setEndTime(source.getEndTime());
+        cloned.setStatus(source.getStatus());
+        cloned.setCreateId(source.getCreateId());
+        cloned.setCreateTime(source.getCreateTime());
+        cloned.setChapterId(source.getChapterId());
+        cloned.setTotalScore(source.getTotalScore());
+        cloned.setExamInstruct(source.getExamInstruct());
+        cloned.setSingleChoiceCount(source.getSingleChoiceCount());
+        cloned.setMultipleChoiceCount(source.getMultipleChoiceCount());
+        cloned.setJudgeCount(source.getJudgeCount());
+        cloned.setTestExamTime(source.getTestExamTime());
+        cloned.setDifficult(source.getDifficult());
+        cloned.setClassId(source.getClassId());
+        cloned.setPaperId(source.getPaperId());
+        cloned.setType(source.getType());
+        return cloned;
+    }
+    private List<Questions> getQuestionsByType(ExamBo examBo) {
+        switch (examBo.getType()) {
+            case "single_choice":
+                return questionsDao.getRandomTitleSingleChoice(examBo);
+            case "multiple_choice":
+                return questionsDao.getRandomTitleMultipleChoice(examBo);
+            case "judge":
+                return questionsDao.getRandomTitleJudge(examBo);
+            default:
+                return new ArrayList<>();
+        }
     }
 }

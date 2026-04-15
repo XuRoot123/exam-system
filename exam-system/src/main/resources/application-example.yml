@@ -2,13 +2,13 @@ spring:
   application:
     name: exam-system
   datasource:
-    password: ${DB_PASSWORD:muzichuan26}
-    username: ${DB_USERNAME:root}
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:exam_system}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    password: muzichuan26
+    username: root
+    url: jdbc:mysql://localhost:3306/exam_system?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
+      host: localhost
+      port: 6379
       database: 0
       timeout: 3000ms
 server:

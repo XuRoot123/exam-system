@@ -1,5 +1,9 @@
 <script>
-import { getAllChapterId, getAllTitle } from "@/api/TitleApi";
+import {
+  getAllChapterId,
+  getAllTitle,
+  showHighFrequencyExamQuestions,
+} from "@/api/TitleApi";
 import { getAllClass } from "@/api/ClassesApi";
 import { addTestPaper } from "@/api/ExamApi";
 
@@ -42,6 +46,7 @@ export default {
       singleChoice: [],
       fillBlank: [],
       multipleChoice: [],
+      highFrequencyQuestions: [],
       selectedTitles: [],
       showTitleType: "",
       titles: [],
@@ -224,6 +229,19 @@ export default {
           this.$message.error("服务器异常！");
         });
     },
+    showHighFrequencyExamQuestions() {
+      showHighFrequencyExamQuestions()
+        .then((res) => {
+          this.highFrequencyQuestions = res.data;
+          this.showTitleType = "high_frequency";
+        })
+        .catch((err) => {
+          this.$message.error(
+            "服务器异常！" + err,
+            "问题出现在showHighFrequencyExamQuestions"
+          );
+        });
+    },
   },
   created() {
     this.initializationData();
@@ -242,6 +260,9 @@ export default {
       >
       <el-button type="primary" @click="getAllTitle('multiple_choice')"
         >多选题题库</el-button
+      >
+      <el-button type="primary" @click="showHighFrequencyExamQuestions()"
+        >查看高频考题</el-button
       >
       <a style="float: right" @click="showTitlesData()"
         ><i
@@ -328,8 +349,29 @@ export default {
         </template>
       </el-table-column>
     </el-table>
+    <el-table
+      v-if="showTitleType === 'high_frequency'"
+      :data="highFrequencyQuestions"
+    >
+      <el-table-column prop="questionId" label="题目编号" width="80">
+      </el-table-column>
+      <el-table-column prop="chapterId" label="所属章节" width="80">
+      </el-table-column>
+      <el-table-column prop="content" label="题目内容"> </el-table-column>
+      <el-table-column prop="type" label="题目类型" width="150">
+      </el-table-column>
+      <el-table-column prop="difficulty" label="题目难度" width="100">
+      </el-table-column>
+      <el-table-column fixed="right" label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button @click="addTitles(scope.row)" type="text" size="small"
+            >添加</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
     <el-drawer
-      title="已选题目(如果有重复添加的题目会只保留一个)"
+      :title="'已选题目(如果有重复添加的题目会只保留一个)'"
       :visible.sync="showTitles"
       direction="btt"
       size="60%"
@@ -362,7 +404,12 @@ export default {
       </el-table>
       <div style="float: right; margin-top: 20px">
         <el-button @click="rollUp()" type="primary">编卷</el-button>
-        <el-button @click="clearTitles()" type="primary">清空</el-button>
+        <el-button
+          v-show="showTitleType !== 'high_frequency'"
+          @click="clearTitles()"
+          type="primary"
+          >清空</el-button
+        >
         <el-button @click="showTitles = false" type="primary">取消</el-button>
       </div>
     </el-drawer>

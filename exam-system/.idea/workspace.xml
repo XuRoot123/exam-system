@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="676c0612-a600-446f-a874-785f0a402968" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../web-exam-system-vue/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/entity/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/TestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/TestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/vo/questions/HotQuestionVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/bo/ExamBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/bo/ExamBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/questions/QuestionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/dao/QuestionsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/QuestionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/ExamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/ExamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/xuroot/service/impl/QuestionsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cn/com/xuroot/ExamSystemApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/com/xuroot/ExamSystemApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/bo/ExamBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/bo/ExamBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/questions/QuestionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/controller/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/dao/QuestionsDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/QuestionsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/ExamServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/ExamServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/xuroot/service/impl/QuestionsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/api/TitleApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/util/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/util/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SelfCompiledVolume.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web-exam-system-vue/src/views/user/teacher/SelfCompiledVolume.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +68,7 @@
   "keyToString": {
     "Maven.exam-system [clean].executor": "Run",
     "Maven.exam-system [compile].executor": "Run",
+    "Maven.exam-system [org.apache.maven.plugins:maven-clean-plugin:3.4.1:clean].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -53,7 +77,7 @@
     "Spring Boot.ExamSystemApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/java/web-exam-system/exam-system/src/main/java/cn/com/xuroot",
+    "last_opened_file_path": "E:/java/spring-boot/springCloudAndRedisAndDocker",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +92,9 @@
     ]
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java\web-exam-system\exam-system\src\main\java\cn\com\xuroot" />
@@ -161,6 +188,22 @@
       <workItem from="1766733509883" duration="8781000" />
       <workItem from="1766825556301" duration="5536000" />
       <workItem from="1766846364357" duration="4191000" />
+      <workItem from="1766982403021" duration="715000" />
+      <workItem from="1767680358028" duration="22000" />
+      <workItem from="1769491747235" duration="1751000" />
+      <workItem from="1770098487266" duration="1844000" />
+      <workItem from="1772531764218" duration="18000" />
+      <workItem from="1773197525500" duration="18000" />
+      <workItem from="1773204661707" duration="6221000" />
+      <workItem from="1773410611635" duration="1186000" />
+      <workItem from="1774340666077" duration="180000" />
+      <workItem from="1774345286701" duration="1550000" />
+      <workItem from="1774677596078" duration="1270000" />
+      <workItem from="1774679720605" duration="3189000" />
+      <workItem from="1774940219240" duration="1461000" />
+      <workItem from="1775100561830" duration="1262000" />
+      <workItem from="1775102141082" duration="599000" />
+      <workItem from="1776230571587" duration="6277000" />
     </task>
     <servers />
   </component>

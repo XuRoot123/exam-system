@@ -4,6 +4,7 @@ import cn.com.xuroot.common.pojo.ResponseResult;
 import cn.com.xuroot.entity.Questions;
 import cn.com.xuroot.service.QuestionsService;
 import cn.com.xuroot.util.AesUtil;
+import cn.com.xuroot.vo.questions.HotQuestionVo;
 import cn.com.xuroot.vo.questions.QuestionsVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -104,5 +105,11 @@ public class QuestionsController {
             }
         }
         return questions != null ? ResponseResult.success(questions) : ResponseResult.error(-1, "服务器故障，请联系管理员！");
+    }
+    @GetMapping("/showHighFrequencyExamQuestions")
+    @Operation(summary = "获取高频考题")
+    public ResponseResult<List<HotQuestionVo>> showHighFrequencyExamQuestions() {
+        List<HotQuestionVo> hotQuestionVo = questionsService.showHighFrequencyExamQuestions();
+        return hotQuestionVo != null ? ResponseResult.success(hotQuestionVo) : ResponseResult.error(-1, "服务器故障，请联系管理员！");
     }
 }

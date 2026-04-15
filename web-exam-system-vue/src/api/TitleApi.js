@@ -35,3 +35,6 @@ export function getQuestionsByQuestionId(questionId) {
     },
   });
 }
+export function showHighFrequencyExamQuestions() {
+  return request.get("/questions/showHighFrequencyExamQuestions");
+}
